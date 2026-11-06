@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { BrandLogo } from "../../components/LogoMark.jsx";
 import {
   Bell,
   BookOpen,
@@ -63,19 +64,13 @@ export default function AdminSidebar({ open, onClose, badges = {} }) {
     >
       {/* Brand */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b border-line px-4">
-        <Link
+        <BrandLogo
           to="/admin"
           onClick={onClose}
-          className={`flex items-center gap-3 rounded-lg p-1 no-underline transition-colors hover:bg-surface-2 ${focusRing}`}
-        >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-400 font-logo text-lg leading-none text-ink-950">
-            V
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-display text-base font-bold tracking-tight text-fg">Admin</span>
-            <span className="text-xs text-fg-3">Vanakkam Soccer</span>
-          </span>
-        </Link>
+          subtitle="Admin"
+          textColor="text-fg"
+          subtitleColor="text-gold-600 dark:text-gold-400"
+        />
 
         <button
           type="button"

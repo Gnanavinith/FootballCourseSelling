@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Sun, Moon, Bell, User as UserIcon, ArrowRight, ChevronRight } from "lucide-react";
-import LogoMark from "../LogoMark.jsx";
+import LogoMark, { BrandLogo } from "../LogoMark.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { authService } from "../../services/auth.service.js";
 import { api } from "../../lib/api.js";
@@ -466,28 +466,12 @@ export default function Navbar({ user = null }) {
       >
         <div className="container-page flex h-16 items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6">
           {/* Logo */}
-          <Link
+          <BrandLogo
             to="/"
-            className="group flex items-center gap-2.5 justify-self-start no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded"
             onClick={() => setOpen(false)}
-          >
-            <LogoMark className="h-8 w-7 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none sm:h-9 sm:w-8" />
-            <span className="flex flex-col leading-none">
-              <span
-                className={`font-display text-[1.15rem] font-black uppercase tracking-wider transition-colors duration-200 sm:text-[1.28rem] ${
-                  isTransparent ? "text-ink-950 dark:text-white" : "text-white"
-                }`}
-              >
-                Vanakkam
-              </span>
-              <span className="mt-1 flex items-center gap-1.5">
-                <span className="h-[2px] w-3 rounded bg-gold-400" />
-                <span className="font-display text-[0.62rem] font-extrabold uppercase tracking-[0.4em] text-gold-400">
-                  Soccer
-                </span>
-              </span>
-            </span>
-          </Link>
+            textColor={isTransparent ? "text-ink-950 dark:text-white" : "text-white"}
+            subtitleColor="text-gold-400"
+          />
 
           {/* Desktop links */}
           <nav className="hidden items-center gap-7 md:flex lg:gap-9" aria-label="Main">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import LogoMark from '../LogoMark.jsx'
+import LogoMark, { BrandLogo } from '../LogoMark.jsx'
 import { MapPin, Mail, ShieldCheck } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
 
@@ -40,20 +40,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-x-8">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-4">
-            <Link to="/" className="inline-flex items-center gap-3 no-underline hover:no-underline">
-              <LogoMark className="h-10 w-9" />
-              <span className="flex flex-col leading-none">
-                <span className="font-display text-2xl font-black uppercase tracking-wider text-fg">
-                  Vanakkam
-                </span>
-                <span className="mt-1 flex items-center gap-2">
-                  <span className="h-[2px] w-4 rounded bg-gold-400" />
-                  <span className="font-display text-[0.68rem] font-extrabold uppercase tracking-[0.45em] text-gold-600 dark:text-gold-400">
-                    Soccer
-                  </span>
-                </span>
-              </span>
-            </Link>
+            <BrandLogo
+              to="/"
+              size="lg"
+              textColor="text-fg"
+              subtitleColor="text-gold-600 dark:text-gold-400"
+            />
 
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-2">
               Football training for passionate players across Tamil Nadu and India.

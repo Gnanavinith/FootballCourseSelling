@@ -1,3 +1,5 @@
+import { BrandLogo } from '../LogoMark.jsx'
+
 const POINTS = [
   'Week 1 unlocks as soon as you enrol',
   'A new lesson every 7 days',
@@ -13,9 +15,9 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
       <aside className="hidden flex-col justify-between p-12 lg:flex xl:p-16 min-h-full border-r border-line bg-surface text-fg">
         <div className="flex flex-col justify-between min-h-full pt-8">
           <div>
-            <span className="badge badge-gold mb-4 inline-flex">
-              Vanakkam Soccer
-            </span>
+            <div className="mb-6">
+              <BrandLogo to="/" size="lg" />
+            </div>
             <h2 className="max-w-md font-display font-black text-3xl sm:text-4xl text-fg tracking-tight leading-tight">
               Your weekly football plan{' '}
               <span className="text-gold-600 dark:text-gold-400">starts here</span>
@@ -54,6 +56,9 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
       {/* Form side (responsive for all screens, full scrolling support on mobile) */}
       <section className="flex flex-1 flex-col items-center justify-center px-4 py-8 sm:px-8 sm:py-12">
         <div className="w-full max-w-md animate-fade-up my-auto rounded-3xl border border-line bg-surface p-6 sm:p-8 shadow-sm">
+          <div className="mb-6 flex justify-center lg:hidden">
+            <BrandLogo to="/" size="md" />
+          </div>
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-fg">
             {title}
           </h1>
