@@ -26,6 +26,102 @@ function fmt(seconds) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
+function WatchTheaterSkeleton() {
+  return (
+    <div className="min-h-screen bg-page text-fg font-sans flex flex-col animate-pulse" aria-hidden="true">
+      {/* Header Skeleton */}
+      <header className="bg-surface/95 border-b border-line px-3.5 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between sticky top-16 z-30 shadow-xs">
+        <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 pr-2">
+          <div className="h-8 w-16 sm:w-20 rounded-xl bg-surface-2" />
+          <div className="h-4 sm:h-5 w-[1px] bg-line shrink-0" />
+          <div className="space-y-1.5 min-w-0">
+            <div className="h-4 w-36 sm:w-60 rounded bg-surface-2" />
+            <div className="h-3 w-20 sm:w-28 rounded bg-surface-2/70" />
+          </div>
+        </div>
+        <div className="h-8 w-8 rounded-xl bg-surface-2" />
+      </header>
+
+      {/* Main Content Skeleton */}
+      <div className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
+        {/* Left Column: Player & Overview */}
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+          {/* Video Player Skeleton */}
+          <div className="rounded-2xl sm:rounded-3xl bg-surface-2 border border-line relative aspect-video flex items-center justify-center overflow-hidden shadow-sm">
+            <div className="w-14 h-14 sm:w-18 sm:h-18 rounded-2xl sm:rounded-3xl bg-surface border border-line flex items-center justify-center text-fg-3/40">
+              <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-current opacity-30" />
+            </div>
+          </div>
+
+          {/* Active lesson strip skeleton */}
+          <div className="flex items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-surface border border-line">
+            <div className="flex items-center gap-2.5 flex-1 min-w-0">
+              <div className="h-7 w-7 rounded-xl bg-surface-2 shrink-0" />
+              <div className="space-y-1.5 flex-1">
+                <div className="h-3.5 w-2/5 rounded bg-surface-2" />
+                <div className="h-2.5 w-20 rounded bg-surface-2/70" />
+              </div>
+            </div>
+            <div className="flex gap-1.5 shrink-0">
+              <div className="h-8 w-8 rounded-xl bg-surface-2" />
+              <div className="h-8 w-16 rounded-xl bg-surface-2" />
+            </div>
+          </div>
+
+          {/* Desktop Overview Skeleton */}
+          <div className="hidden lg:block bg-surface border border-line rounded-3xl p-6 lg:p-8 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="h-6 w-32 rounded-full bg-surface-2" />
+              <div className="h-4 w-28 rounded bg-surface-2/70" />
+            </div>
+            <div className="space-y-2">
+              <div className="h-6 w-3/5 rounded bg-surface-2" />
+              <div className="h-3.5 w-full rounded bg-surface-2/70" />
+              <div className="h-3.5 w-4/5 rounded bg-surface-2/70" />
+            </div>
+            <div className="pt-4 border-t border-line flex gap-3">
+              <div className="h-9 w-32 rounded-2xl bg-surface-2" />
+              <div className="h-9 w-44 rounded-2xl bg-surface-2" />
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Module selector & playlist skeleton (Desktop) */}
+        <div className="hidden lg:block space-y-6">
+          {/* Module Selector */}
+          <div className="bg-surface border border-line rounded-3xl p-5 shadow-sm space-y-3">
+            <div className="h-3.5 w-36 rounded bg-surface-2" />
+            <div className="grid grid-cols-4 gap-2">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                <div key={i} className="h-14 rounded-2xl bg-surface-2" />
+              ))}
+            </div>
+          </div>
+
+          {/* Playlist */}
+          <div className="bg-surface border border-line rounded-3xl p-6 shadow-sm flex flex-col h-[460px] space-y-3">
+            <div className="flex items-center justify-between pb-4 border-b border-line mb-1">
+              <div className="h-4 w-36 rounded bg-surface-2" />
+              <div className="h-3.5 w-16 rounded bg-surface-2/70" />
+            </div>
+            <div className="space-y-2.5 flex-1">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="h-14 rounded-2xl bg-surface-2/60 border border-line p-3.5 flex items-center gap-3">
+                  <div className="h-7 w-7 rounded-xl bg-surface-2 shrink-0" />
+                  <div className="space-y-1.5 flex-1 min-w-0">
+                    <div className="h-3.5 w-3/4 rounded bg-surface-2" />
+                    <div className="h-2.5 w-16 rounded bg-surface-2/70" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Watch() {
   const { courseId } = useParams();
   const navigate = useNavigate();
@@ -86,23 +182,16 @@ export default function Watch() {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-page flex items-center justify-center transition-colors duration-200">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-gold-400 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-xs font-medium text-fg-3 dark:text-zinc-400">Loading masterclass theater...</p>
-        </div>
-      </div>
-    );
+    return <WatchTheaterSkeleton />;
   }
 
   if (error) {
     return (
       <div className="min-h-screen bg-page flex items-center justify-center p-4 sm:p-6 transition-colors duration-200">
-        <div className="max-w-md w-full bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-3xl p-6 sm:p-8 text-center shadow-card dark:shadow-2xl">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <h2 className="text-base font-bold text-fg dark:text-white mb-1">Unable to Load Stream</h2>
-          <p className="text-xs text-fg-3 dark:text-zinc-400 mb-6">{error}</p>
+        <div className="max-w-md w-full bg-surface border border-line rounded-3xl p-6 sm:p-8 text-center shadow-sm">
+          <AlertCircle className="w-12 h-12 text-danger-500 mx-auto mb-4" />
+          <h2 className="font-display text-base font-bold text-fg mb-1">Unable to Load Stream</h2>
+          <p className="text-xs text-fg-3 mb-6">{error}</p>
           <Link to="/dashboard" className="btn btn-md btn-primary w-full">
             Back to Dashboard
           </Link>
@@ -112,7 +201,16 @@ export default function Watch() {
   }
 
   if (!course) {
-    return <div className="p-6 text-center text-xs text-fg-3 dark:text-zinc-400 bg-page min-h-screen">Course not found.</div>;
+    return (
+      <div className="min-h-screen bg-page flex items-center justify-center p-6 text-center">
+        <div className="max-w-sm rounded-3xl border border-line bg-surface p-8 shadow-sm">
+          <BookOpen className="w-12 h-12 text-gold-500 mx-auto mb-3" />
+          <h2 className="font-display text-base font-bold text-fg mb-1">Masterclass Not Found</h2>
+          <p className="text-xs text-fg-3 mb-6">The requested training program could not be located.</p>
+          <Link to="/dashboard" className="btn btn-primary w-full">Back to Hub</Link>
+        </div>
+      </div>
+    );
   }
 
   const hasSyllabus = Boolean(course.syllabus || course.syllabusUrl || (course.documents && course.documents.length > 0));
