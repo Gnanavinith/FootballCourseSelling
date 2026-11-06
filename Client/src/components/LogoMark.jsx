@@ -83,28 +83,32 @@ export function BrandLogo({
   const defaultMarkClass =
     markClassName ||
     (isSm
-      ? "h-7 w-6"
+      ? "h-5 w-4.5 sm:h-6 sm:w-5"
       : isLg
-        ? "h-10 w-9 sm:h-11 sm:w-10"
-        : "h-8 w-7 sm:h-9 sm:w-8");
+        ? "h-8 w-7 sm:h-10 sm:w-9"
+        : "h-7 w-6 sm:h-9 sm:w-8");
 
   const titleClass = isSm
-    ? "text-[1.05rem]"
+    ? "text-[0.85rem] sm:text-[1rem]"
     : isLg
-      ? "text-2xl sm:text-[1.7rem]"
-      : "text-[1.15rem] sm:text-[1.28rem]";
+      ? "text-xl sm:text-2xl"
+      : "text-[0.98rem] sm:text-[1.25rem]";
 
   const subTextClass = isSm
-    ? "text-[0.55rem] tracking-[0.35em]"
+    ? "text-[0.45rem] tracking-[0.25em] sm:text-[0.52rem] sm:tracking-[0.32em]"
     : isLg
-      ? "text-[0.68rem] tracking-[0.45em]"
-      : "text-[0.62rem] tracking-[0.4em]";
+      ? "text-[0.56rem] tracking-[0.36em] sm:text-[0.66rem] sm:tracking-[0.42em]"
+      : "text-[0.5rem] tracking-[0.3em] sm:text-[0.62rem] sm:tracking-[0.4em]";
 
-  const barClass = isSm ? "w-2.5 h-[2px]" : isLg ? "w-4 h-[2px]" : "w-3 h-[2px]";
+  const barClass = isSm
+    ? "w-1.5 h-[1.5px] sm:w-2 sm:h-[1.5px]"
+    : isLg
+      ? "w-2.5 h-[1.5px] sm:w-3.5 sm:h-[2px]"
+      : "w-2 h-[1.5px] sm:w-3 sm:h-[2px]";
 
   const content = (
     <div
-      className={`group inline-flex items-center gap-2.5 leading-none transition-transform duration-200 motion-reduce:transition-none ${className}`}
+      className={`group inline-flex items-center gap-1.5 sm:gap-2.5 leading-none transition-transform duration-200 motion-reduce:transition-none ${className}`}
     >
       <LogoMark
         className={`${defaultMarkClass} shrink-0 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none`}
