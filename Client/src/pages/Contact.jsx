@@ -128,39 +128,40 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-page font-sans text-fg-body transition-colors duration-300">
-      {/* 1. Hero */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#111418] text-white">
-        <PitchLines className={`pointer-events-none absolute inset-y-0 right-0 h-full w-full text-white/[0.07] sm:w-[75%] lg:w-[62%] ${pitchMask}`} />
+      {/* 1. Hero matching Hero.jsx */}
+      <section className="relative overflow-hidden border-b border-line bg-surface text-fg py-14 sm:py-20">
+        <PitchLines className={`pointer-events-none absolute inset-y-0 right-0 h-full w-full text-fg/[0.04] sm:w-[75%] lg:w-[62%] ${pitchMask}`} />
 
-        <div className="container-page relative z-10 py-16 sm:py-24 lg:py-28">
+        <div className="container-page relative z-10">
           <Reveal>
-            <h1 className="text-3xl font-black leading-tight tracking-tight sm:text-5xl">
-              <span className="block text-white">Let’s talk</span>
-              <span className="block text-gold-400">football.</span>
+            <span className="badge badge-gold mb-3 inline-flex">
+              Support &amp; Inquiries
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-fg">
+              Let's talk{' '}
+              <span className="text-gold-600 dark:text-gold-400">football.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={120}>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-300 sm:text-base">
-              Questions about a course, your account or training? Message the coaches and we will reply within one business day.
+            <p className="mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-fg-2">
+              Questions about a course, your account or training? Message Coach Prasanth and the technical team—we reply within one business day.
             </p>
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <a href="#enquiry" className="btn btn-lg btn-primary px-8 py-3.5 font-black">Send a Message</a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#enquiry" className="btn btn-lg btn-primary px-8 py-3.5 font-bold shadow-glow">Send a Message</a>
               {CONTACT.whatsapp && (
                 <a
                   href={`https://wa.me/${CONTACT.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm font-semibold text-white no-underline hover:no-underline"
+                  className="btn btn-lg btn-outline inline-flex items-center gap-2 font-bold"
                 >
-                  <FaWhatsapp className="h-4 w-4 text-emerald-400" />
-                  <span className="bg-gradient-to-r from-gold-400 to-gold-400 bg-[length:100%_1px] bg-left-bottom bg-no-repeat pb-0.5">
-                    Chat on WhatsApp
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-gold-400 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
+                  <FaWhatsapp className="h-4 w-4 text-pitch-600 dark:text-pitch-400" />
+                  <span>Chat on WhatsApp</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </a>
               )}
             </div>

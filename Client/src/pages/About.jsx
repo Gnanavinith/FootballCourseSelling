@@ -119,14 +119,14 @@ function Stat({ value, decimals, suffix, label }) {
   }, [inView, value])
 
   return (
-    <div ref={ref} className="p-4 sm:p-5 text-center border-b sm:border-b-0 sm:border-r border-white/10 last:border-none">
-      <p className="font-display text-2xl sm:text-3xl font-black tabular-nums text-gold-400">
+    <div ref={ref} className="p-4 sm:p-5 text-center border-b sm:border-b-0 sm:border-r border-line last:border-none">
+      <p className="font-display text-2xl sm:text-3xl font-black tabular-nums text-gold-600 dark:text-gold-400">
         <span>
           {n.toFixed(decimals)}
           {suffix}
         </span>
       </p>
-      <p className="text-[11px] sm:text-xs mt-1 font-semibold text-zinc-300">{label}</p>
+      <p className="text-[11px] sm:text-xs mt-1 font-semibold text-fg-3">{label}</p>
     </div>
   )
 }
@@ -137,11 +137,11 @@ export default function About() {
   }, [])
 
   return (
-    <main className="bg-page text-fg-body font-sans transition-colors duration-300 overflow-hidden">
-      {/* Hero Section with Football Pitch Court Background */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#111418] text-white min-h-[calc(100vh-var(--nav-h))] flex items-center py-16 lg:py-20">
+    <main className="bg-page text-fg font-sans transition-colors duration-300 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-line bg-surface text-fg py-14 sm:py-20">
         <PitchLines
-          className={`pointer-events-none absolute inset-y-0 right-0 h-full w-full text-white/[0.07] sm:w-[75%] lg:w-[62%] ${pitchMask}`}
+          className={`pointer-events-none absolute inset-y-0 right-0 h-full w-full text-fg/[0.04] sm:w-[75%] lg:w-[62%] ${pitchMask}`}
         />
 
         <div className="container-page relative z-10 w-full">
@@ -149,21 +149,20 @@ export default function About() {
 
             {/* Left Column: Content */}
             <div className="space-y-6 text-left animate-fade-up">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-400 text-xs font-bold tracking-widest uppercase">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Vanakkam Soccer Academy</span>
-              </div>
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                The Vanakkam <span className="text-gradient">Soccer Methodology</span>
+              <span className="badge badge-gold inline-flex">
+                Vanakkam Soccer Academy
+              </span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-fg tracking-tight leading-tight">
+                The Vanakkam <span className="text-gold-600 dark:text-gold-400">Soccer Methodology</span>
               </h1>
-              <p className="text-lead text-ink-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              <p className="text-fg-2 text-sm sm:text-base leading-relaxed max-w-xl">
                 We discarded traditional rigid card layouts to create a seamless, continuous flow of professional football mastery, expert tactical drills, and bilingual coaching.
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link to="/courses" className="btn btn-lg btn-primary px-8 py-3.5 font-black shadow-glow">
+                <Link to="/courses" className="btn btn-lg btn-primary px-8 py-3.5 font-bold shadow-glow">
                   Explore Masterclasses <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
-                <Link to="/contact" className="btn btn-lg btn-outline-light px-6 py-3.5 font-bold">
+                <Link to="/contact" className="btn btn-lg btn-outline px-6 py-3.5 font-bold">
                   Contact Coaches
                 </Link>
               </div>
@@ -171,49 +170,44 @@ export default function About() {
 
             {/* Right Column: Elite Academy Badge Grid */}
             <div className="space-y-6 animate-fade-up" style={{ animationDelay: '120ms' }}>
-              <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-8 shadow-2xl space-y-6">
-                {/* Subtle court lines in card background for tactical authenticity */}
-                <div className="absolute inset-0 opacity-[0.035] pointer-events-none">
-                  <PitchLines className="w-full h-full text-white" />
-                </div>
-
-                <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="relative rounded-3xl overflow-hidden border border-line bg-page p-6 sm:p-8 shadow-sm space-y-6 text-fg">
+                <div className="relative z-10 flex items-center justify-between border-b border-line pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-gold-400/20 border border-gold-400/30 flex items-center justify-center text-gold-400">
+                    <div className="w-10 h-10 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white">Elite Coaching Standard</h3>
-                      <p className="text-[11px] text-zinc-400">Verified professional curriculum</p>
+                      <h3 className="text-sm font-bold text-fg">Elite Coaching Standard</h3>
+                      <p className="text-[11px] text-fg-3">Verified professional curriculum</p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-2.5 py-1 rounded-full bg-pitch-500/10 border border-pitch-500/20 text-pitch-700 dark:text-pitch-400 text-[10px] font-bold uppercase tracking-wider">
                     Active
                   </span>
                 </div>
 
                 <div className="relative z-10 grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1 transition-colors hover:border-gold-400/30">
-                    <Activity className="w-4 h-4 text-gold-400 mb-2" />
-                    <h4 className="text-xs font-bold text-white">Tactical IQ</h4>
-                    <p className="text-[11px] text-zinc-400">Positioning & vision drills</p>
+                  <div className="p-4 rounded-2xl bg-surface border border-line space-y-1 transition-colors hover:border-gold-500/40">
+                    <Activity className="w-4 h-4 text-gold-600 dark:text-gold-400 mb-2" />
+                    <h4 className="text-xs font-bold text-fg">Tactical IQ</h4>
+                    <p className="text-[11px] text-fg-3">Positioning &amp; vision drills</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1 transition-colors hover:border-gold-400/30">
-                    <Flame className="w-4 h-4 text-gold-400 mb-2" />
-                    <h4 className="text-xs font-bold text-white">Pro Match Ready</h4>
-                    <p className="text-[11px] text-zinc-400">High-intensity conditioning</p>
+                  <div className="p-4 rounded-2xl bg-surface border border-line space-y-1 transition-colors hover:border-gold-500/40">
+                    <Flame className="w-4 h-4 text-gold-600 dark:text-gold-400 mb-2" />
+                    <h4 className="text-xs font-bold text-fg">Pro Match Ready</h4>
+                    <p className="text-[11px] text-fg-3">High-intensity conditioning</p>
                   </div>
                 </div>
 
                 <div className="relative z-10 pt-2 text-center">
-                  <span className="text-xs font-semibold text-gold-400 tracking-wide uppercase">
+                  <span className="text-xs font-semibold text-gold-600 dark:text-gold-400 tracking-wide uppercase">
                     Trusted by 79,900+ Footballers Worldwide
                   </span>
                 </div>
               </div>
 
               {/* Integrated Statistics Container */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 border border-white/15 bg-white/[0.03] backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl">
+              <div className="grid grid-cols-2 sm:grid-cols-4 border border-line bg-page rounded-2xl overflow-hidden shadow-sm">
                 {STATS.map((s) => (
                   <Stat key={s.label} {...s} />
                 ))}
@@ -285,24 +279,26 @@ export default function About() {
         </div>
       </section>
 
-      {/* Cinematic Flow CTA Banner with Subtle Pitch Lines */}
-      <section className="relative overflow-hidden section-dark hero-bg py-24">
-        <PitchLines className="pointer-events-none absolute inset-0 m-auto h-full w-full text-white/[0.05] [mask-image:radial-gradient(circle,black_45%,transparent_80%)]" />
+      {/* Bottom CTA Banner matching Hero.jsx */}
+      <section className="relative overflow-hidden bg-page text-fg py-20 sm:py-28 border-t border-line">
+        <PitchLines className="pointer-events-none absolute inset-0 m-auto h-full w-full text-fg/[0.04] [mask-image:radial-gradient(circle,black_45%,transparent_80%)]" />
 
         <div className="container-page relative z-10 text-center space-y-6">
           <Reveal className="max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-400/10 text-gold-400 text-xs font-bold uppercase tracking-widest border border-gold-400/20">
-              <Sparkles className="w-3.5 h-3.5" /> Start Training Today
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">Ready to join the academy flow?</h2>
-            <p className="text-lead text-ink-300 max-w-xl mx-auto text-sm sm:text-base">
+            <span className="badge badge-gold mb-2 inline-flex">
+              Start Training Today
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-fg tracking-tight">
+              Ready to join the <span className="text-gold-600 dark:text-gold-400">academy flow?</span>
+            </h2>
+            <p className="text-fg-2 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
               Choose your professional masterclass track and start your first weekly training module immediately.
             </p>
             <div className="pt-6 flex flex-wrap justify-center gap-4">
-              <Link to="/courses" className="btn btn-lg btn-primary px-8 py-4 font-black shadow-glow">
+              <Link to="/courses" className="btn btn-lg btn-primary px-8 py-4 font-bold shadow-glow">
                 Explore Masterclasses <ArrowRight className="w-4 h-4 ml-1" />
               </Link>
-              <Link to="/register" className="btn btn-lg btn-outline-light px-8 py-4 font-bold">
+              <Link to="/register" className="btn btn-lg btn-outline px-8 py-4 font-bold">
                 Create Athlete Account
               </Link>
             </div>

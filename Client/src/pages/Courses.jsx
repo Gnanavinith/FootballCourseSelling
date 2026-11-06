@@ -9,7 +9,7 @@ import { useInView } from '../hooks/useInView.js'
 const USE_DUMMY_DATA = false
 const fakeFetch = () => new Promise((resolve) => setTimeout(() => resolve(dummyCourses), 700))
 
-const WHATSAPP_LINK = `https://wa.me/919361405307?text=${encodeURIComponent('Hi Coach Karthik, please let me know when new masterclasses are available.')}`
+const WHATSAPP_LINK = `https://wa.me/919361405307?text=${encodeURIComponent('Hi Coach Prasanth, please let me know when new masterclasses are available.')}`
 
 const inr = new Intl.NumberFormat('en-IN', {
   style: 'currency',
@@ -30,24 +30,24 @@ function Reveal({ children, delay = 0, className = '' }) {
   )
 }
 
-/* Shared empty-state card (gold glass look, mobile friendly) */
+/* Shared empty-state card */
 function EmptyState({ icon: Icon, title, text, children }) {
   return (
     <div
       role="status"
-      className="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-gold-500/25 bg-gradient-to-b from-gold-400/10 via-surface to-surface px-6 py-10 text-center shadow-card sm:px-10 sm:py-12"
+      className="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-line bg-surface p-8 sm:p-12 text-center shadow-sm"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-gold-400/25 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-40 w-80 rounded-full bg-gold-400/10 blur-3xl"
       />
-      <span className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gold-500/30 bg-gold-400/15 text-gold-600 ring-8 ring-gold-400/5 dark:text-gold-400">
-        <Icon className="h-7 w-7" aria-hidden="true" />
+      <span className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-gold-500/20 bg-gold-500/10 text-gold-600 dark:text-gold-400">
+        <Icon className="h-6 w-6" aria-hidden="true" />
       </span>
-      <h2 className="relative mt-5 font-display text-lg font-black tracking-tight text-fg sm:text-xl">
+      <h2 className="relative mt-5 font-display text-lg sm:text-xl font-bold tracking-tight text-fg">
         {title}
       </h2>
-      <p className="relative mx-auto mt-2 max-w-xs text-sm leading-relaxed text-fg-3">{text}</p>
+      <p className="relative mx-auto mt-2 max-w-xs text-sm leading-relaxed text-fg-2">{text}</p>
       {children && (
         <div className="relative mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           {children}
@@ -198,28 +198,27 @@ export default function Courses() {
   const shortQuery = query.trim().length > 28 ? `${query.trim().slice(0, 28)}…` : query.trim()
 
   return (
-    <main className="min-h-screen bg-page text-fg-body font-sans transition-colors duration-300">
-      {/* Optimized Hero Section with zero gap below navbar */}
-      <section className="section-dark hero-bg pt-8 pb-10 lg:pt-12 lg:pb-14">
+    <main className="min-h-screen bg-page text-fg font-sans transition-colors duration-300">
+      {/* Hero Section matching Hero.jsx */}
+      <section className="relative overflow-hidden bg-surface text-fg pt-12 pb-14 border-b border-line">
         <div className="container-page relative z-10 text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-400 text-xs font-bold tracking-widest uppercase">
-            <Trophy className="w-3.5 h-3.5" />
-            <span>Editorial Catalog</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Professional <span className="text-gradient">Masterclasses</span>
+          <span className="badge badge-gold mb-2 inline-flex">
+            Academy Catalog
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-fg tracking-tight">
+            Professional <span className="text-gold-600 dark:text-gold-400">Masterclasses</span>
           </h1>
-          <p className="text-ink-300 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
-            Structured football training programmes designed by elite coaches for serious athletes.
+          <p className="text-fg-2 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+            Structured football training programmes designed by Coach Prasanth for dedicated athletes.
           </p>
 
           {!error && (
-            <div className="pt-2 max-w-sm mx-auto relative">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+            <div className="pt-3 max-w-sm mx-auto relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-fg-3 pointer-events-none" />
               <input
                 type="search"
                 aria-label="Search masterclasses"
-                className="input bg-surface text-fg border-line pl-10 h-11 text-xs"
+                className="input bg-page text-fg border-line pl-10 h-11 text-xs sm:text-sm shadow-sm"
                 placeholder="Search masterclasses..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
