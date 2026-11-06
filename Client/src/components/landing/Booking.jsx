@@ -117,7 +117,7 @@ export default function Booking() {
   }
 
   return (
-    <section id="booking" className="relative overflow-hidden bg-white text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#080d14] dark:border-white/5 dark:text-white">
+    <section id="booking" className="relative overflow-hidden bg-page text-fg-body py-16 sm:py-24 border-t border-line transition-colors duration-300">
       {/* Background glow */}
       <div
         aria-hidden="true"
@@ -127,39 +127,39 @@ export default function Booking() {
       <div className="container-page relative z-10">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Summary panel on left */}
-          <aside className="lg:col-span-5 rounded-3xl border border-slate-200/90 bg-slate-50 p-6 sm:p-8 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:shadow-card lg:sticky lg:top-28">
+          <aside className="lg:col-span-5 rounded-3xl border border-line bg-surface p-6 sm:p-8 shadow-sm lg:sticky lg:top-28 text-fg">
             <span className="badge badge-gold mb-3 inline-flex">
               Direct Mentorship
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-fg">
               Book a 1-on-1 Session
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-ink-600 dark:text-ink-300 leading-relaxed">
+            <p className="mt-2 text-xs sm:text-sm text-fg-2 leading-relaxed">
               Get your match clips analyzed, fix technical habits in real time, and gain custom trial advice from Coach Prasanth.
             </p>
 
-            <dl className="mt-8 space-y-4 border-t border-slate-200 dark:border-white/10 pt-6 text-sm">
+            <dl className="mt-8 space-y-4 border-t border-line pt-6 text-sm">
               <div className="flex justify-between gap-4">
-                <dt className="text-ink-500 dark:text-ink-400 text-xs uppercase font-bold tracking-wider">Plan</dt>
-                <dd className="text-right font-semibold text-ink-950 dark:text-white">{service.label}</dd>
+                <dt className="text-fg-3 text-xs uppercase font-bold tracking-wider">Plan</dt>
+                <dd className="text-right font-semibold text-fg">{service.label}</dd>
               </div>
               <div className="flex justify-between gap-4">
-                <dt className="text-ink-500 dark:text-ink-400 text-xs uppercase font-bold tracking-wider">Date</dt>
-                <dd className="text-right font-semibold text-ink-950 dark:text-white">{prettyDate(form.date) || 'Pick a date'}</dd>
+                <dt className="text-fg-3 text-xs uppercase font-bold tracking-wider">Date</dt>
+                <dd className="text-right font-semibold text-fg">{prettyDate(form.date) || 'Pick a date'}</dd>
               </div>
               <div className="flex justify-between gap-4">
-                <dt className="text-ink-500 dark:text-ink-400 text-xs uppercase font-bold tracking-wider">Slot</dt>
-                <dd className="text-right font-semibold text-ink-950 dark:text-white">{form.time}</dd>
+                <dt className="text-fg-3 text-xs uppercase font-bold tracking-wider">Slot</dt>
+                <dd className="text-right font-semibold text-fg">{form.time}</dd>
               </div>
-              <div className="flex items-end justify-between gap-4 border-t border-slate-200 dark:border-white/10 pt-4">
-                <dt className="text-ink-500 dark:text-ink-400 text-xs uppercase font-bold tracking-wider">Total Investment</dt>
+              <div className="flex items-end justify-between gap-4 border-t border-line pt-4">
+                <dt className="text-fg-3 text-xs uppercase font-bold tracking-wider">Total Investment</dt>
                 <dd key={service.id} className="font-display text-3xl font-black text-gold-600 dark:text-gold-400">
                   {inr.format(service.price)}
                 </dd>
               </div>
             </dl>
 
-            <div className="mt-6 flex items-center gap-2 text-xs text-ink-500 dark:text-ink-400 pt-4 border-t border-slate-200 dark:border-white/5">
+            <div className="mt-6 flex items-center gap-2 text-xs text-fg-3 pt-4 border-t border-line">
               <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-pitch-500 dark:text-pitch-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect x="4" y="11" width="16" height="10" rx="2" />
                 <path d="M8 11V7a4 4 0 0 1 8 0v4" />
@@ -169,7 +169,7 @@ export default function Booking() {
           </aside>
 
           {/* Form on right */}
-          <div className="lg:col-span-7 rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:shadow-card">
+          <div className="lg:col-span-7 rounded-3xl border border-line bg-surface p-6 sm:p-8 shadow-md text-fg">
             {done ? (
               <div className="py-8 text-center animate-fade-up" role="status">
                 <span className="mx-auto flex h-16 w-16 animate-pop items-center justify-center rounded-full bg-pitch-500 text-white shadow-pitch-glow">
@@ -177,8 +177,8 @@ export default function Booking() {
                     <path d="m5 12.5 4.5 4.5L19 7.5" />
                   </svg>
                 </span>
-                <h3 className="mt-5 font-display text-2xl font-extrabold text-ink-950 dark:text-white">Booking Confirmed!</h3>
-                <p className="mx-auto mt-2 max-w-sm text-sm text-ink-600 dark:text-ink-300">
+                <h3 className="mt-5 font-display text-2xl font-extrabold text-fg">Booking Confirmed!</h3>
+                <p className="mx-auto mt-2 max-w-sm text-sm text-fg-2">
                   Thank you, {form.name.trim().split(' ')[0]}. Coach Prasanth has received your details for {service.label} on {prettyDate(form.date)}, {form.time}.
                 </p>
                 <button type="button" className="btn btn-md btn-outline mx-auto mt-6" onClick={reset}>
@@ -188,8 +188,8 @@ export default function Booking() {
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-ink-950 dark:text-white">Your Football Details</h3>
-                  <p className="text-xs text-ink-500 dark:text-ink-400 mt-0.5">Please share accurate contact details for session link delivery.</p>
+                  <h3 className="font-display text-xl font-bold text-fg">Your Football Details</h3>
+                  <p className="text-xs text-fg-3 mt-0.5">Please share accurate contact details for session link delivery.</p>
                 </div>
 
                 <Field
@@ -233,17 +233,17 @@ export default function Booking() {
 
                 {/* Service selection as cards */}
                 <fieldset>
-                  <legend className="label mb-2 block font-semibold text-xs uppercase tracking-wider text-ink-600 dark:text-ink-300">
+                  <legend className="label mb-2 block font-semibold text-xs uppercase tracking-wider text-fg-2">
                     Select Mentorship Format
                   </legend>
                   <div className="grid gap-3">
                     {SERVICES.map((s) => (
                       <label
                         key={s.id}
-                        className={`relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl border p-4 transition-all duration-200 ${
+                        className={`relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl border p-4 pr-16 sm:pr-5 transition-all duration-200 ${
                           form.serviceId === s.id
                             ? 'border-gold-500 bg-gold-500/10 shadow-[0_0_15px_rgba(245,158,11,0.15)] dark:border-gold-400 dark:bg-gold-400/10'
-                            : 'border-slate-200 bg-slate-50/70 hover:border-slate-300 hover:bg-slate-100/70 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/25 dark:hover:bg-white/[0.04]'
+                            : 'border-line bg-surface-2/60 hover:border-gold-400/40 hover:bg-surface-2 text-fg'
                         }`}
                       >
                         <input
@@ -255,8 +255,8 @@ export default function Booking() {
                           className="sr-only"
                         />
                         <div className="min-w-0 flex-1">
-                          <span className="block font-display font-bold text-sm text-ink-950 dark:text-white">{s.label}</span>
-                          <span className="text-xs text-ink-500 dark:text-ink-400 block mt-0.5">{s.desc}</span>
+                          <span className="block font-display font-bold text-sm text-fg">{s.label}</span>
+                          <span className="text-xs text-fg-3 block mt-0.5">{s.desc}</span>
                         </div>
                         <div className="text-right shrink-0">
                           <span className="font-display font-extrabold text-gold-600 dark:text-gold-400 text-base sm:text-lg block">

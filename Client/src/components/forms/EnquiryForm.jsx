@@ -147,7 +147,7 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
 
   const formCol = (
     <Reveal delay={120}>
-      <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:shadow-card">
+      <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8 shadow-md text-fg">
                 {sent ? (
                   <div className="py-10 text-center animate-fade-up" role="status">
                     <span className="mx-auto flex h-16 w-16 animate-pop items-center justify-center rounded-full bg-pitch-500 text-white shadow-pitch-glow">
@@ -155,8 +155,8 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
                         <path d="m5 12.5 4.5 4.5L19 7.5" />
                       </svg>
                     </span>
-                    <h3 className="mt-5 font-display text-2xl font-extrabold text-ink-950 dark:text-white">We Received Your Enquiry!</h3>
-                    <p className="mx-auto mt-2 max-w-sm text-sm text-ink-600 dark:text-ink-300">
+                    <h3 className="mt-5 font-display text-2xl font-extrabold text-fg">We Received Your Enquiry!</h3>
+                    <p className="mx-auto mt-2 max-w-sm text-sm text-fg-2">
                       Thank you, {values.name.trim().split(' ')[0]}. A coach will contact you on {values.phone || 'your number'} shortly.
                     </p>
                     <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
@@ -171,8 +171,8 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
                 ) : (
                   <form onSubmit={handleSubmit} noValidate className="space-y-5">
                     <div>
-                      <h3 className="font-display text-xl font-bold text-ink-950 dark:text-white">Send An Enquiry</h3>
-                      <p className="text-xs text-ink-500 dark:text-ink-400 mt-0.5">Takes under 60 seconds. We respond within a few hours.</p>
+                      <h3 className="font-display text-xl font-bold text-fg">Send An Enquiry</h3>
+                      <p className="text-xs text-fg-3 mt-0.5">Takes under 60 seconds. We respond within a few hours.</p>
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -287,7 +287,7 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
   }
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#06090e] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-page text-fg-body py-16 sm:py-24 border-t border-line transition-colors duration-300">
       <div className="container-page">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {guidance}

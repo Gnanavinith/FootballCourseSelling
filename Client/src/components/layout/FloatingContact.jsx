@@ -19,12 +19,12 @@ export default function FloatingContact() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
   return (
-    <div className={`floating-contact fixed right-6 z-50 flex flex-col gap-3 transition-all ${showBar ? "bottom-24" : "bottom-6"}`}>
-      <a href={TEL} aria-label="Call us" className="flex h-12 w-12 items-center justify-center rounded-full bg-gold-400 text-ink-950 shadow-lg transition hover:bg-gold-300">
+    <div className={`floating-contact fixed right-3.5 sm:right-6 z-40 flex flex-col gap-2.5 sm:gap-3 transition-all ${showBar ? "bottom-24" : "bottom-5 sm:bottom-6"}`}>
+      <a href={TEL} aria-label="Call us" className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-gold-400 text-ink-950 shadow-lg transition hover:bg-gold-300">
         <PhoneIcon />
       </a>
-      <a href={WA} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="flex h-12 w-12 items-center justify-center rounded-full bg-pitch-600 text-white shadow-lg transition hover:bg-pitch-700">
-        <FaWhatsapp className="h-6 w-6" />
+      <a href={WA} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-pitch-600 text-white shadow-lg transition hover:bg-pitch-700">
+        <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
       </a>
     </div>
   )

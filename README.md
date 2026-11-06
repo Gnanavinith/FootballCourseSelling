@@ -26,3 +26,4 @@ Vanakkam Soccer Academy — Full-Stack Football Course Selling Platform with Wee
 - **Secure Checkout**: Razorpay payment gateway integration with server-side validation and 100% discount free enrollments
 - **Student Dashboard**: Enrolled courses, weekly drip curriculum unlocks, lesson video streaming with BunnyCDN/Cloudinary, progress tracking
 - **Admin Panel**: Courses, Weekly Videos, Orders, Students, Coupons, Enquiries, Email System, and Notification Center
+

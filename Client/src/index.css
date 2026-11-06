@@ -28,6 +28,7 @@
   --c-tint-gold:rgb(212 175 55 / .16);  --c-on-tint-gold:#e6cb68;
   --c-tint-green:rgb(34 192 111 / .16); --c-on-tint-green:#52d68f;
   --c-tint-red:rgb(229 72 77 / .16);    --c-on-tint-red:#ff8a8d;
+  color-scheme: dark;
 }
 
 @theme {
@@ -96,7 +97,7 @@ html:not(.dark) { background: #f7f7f5; }
    ========================================================= */
 @layer base {
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
     --nav-h: 4rem;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
   }
@@ -386,6 +387,17 @@ html:not(.dark) { background: #f7f7f5; }
   .badge-gray  { background-color: var(--c-surface-2); color: var(--c-fg-3); }
 
   /* ---------- Form fields (used by Field.jsx) ---------- */
+  .form-light {
+    --c-surface: #ffffff;
+    --c-surface-2: #eeeeea;
+    --c-line: #deded8;
+    --c-line-strong: #c4c4bc;
+    --c-fg: #0a0a09;
+    --c-fg-body: #232321;
+    --c-fg-2: #52524d;
+    --c-fg-3: #70706a;
+    color-scheme: light;
+  }
   .label {
     display: block;
     margin-bottom: 0.375rem;
@@ -405,9 +417,21 @@ html:not(.dark) { background: #f7f7f5; }
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.4;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+  .dark .input {
+    background-color: var(--c-surface-2);
+  }
+  .form-light .input {
+    background-color: #ffffff !important;
+    color: #0a0a09 !important;
+    border-color: #c4c4bc !important;
+  }
+  .form-light .label {
+    color: #232321 !important;
   }
   .input::placeholder { color: var(--c-fg-3); }
+  .form-light .input::placeholder { color: #70706a !important; }
   .input:focus {
     outline: none;
     border-color: var(--color-gold-500);
