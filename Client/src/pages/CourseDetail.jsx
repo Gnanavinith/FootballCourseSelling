@@ -220,9 +220,16 @@ export default function CourseDetail() {
 
   const weeks = Number(course.totalWeeks || course.weeks || 0);
   const free = course.price === 0;
-  const priceText = free ? "Free Access" : inr.format(course.price ?? 0);
+  const price = Number(course.price ?? 0);
+  const originalPrice = Number(course.originalPrice ?? 0);
+  const hasDiscount = !free && originalPrice > price;
+  const discountPercent = hasDiscount ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+  const savingsAmount = hasDiscount ? originalPrice - price : 0;
+  const priceText = free ? "Free Access" : inr.format(price);
+  const originalPriceText = hasDiscount ? inr.format(originalPrice) : null;
   const buyLabel = free ? "Enroll For Free" : "Enroll & Unlock Masterclass";
   const lang = course.language === "Tamil" ? "ta" : undefined;
+  const description = course.shortDesc || course.description || course.fullDesc || "";
   const outcomes = Array.isArray(course.outcomes) ? course.outcomes : [];
   const titles = course.weekTitles || course.outline?.map((o) => o.title) || [];
   const weekRows = Array.from({ length: weeks }, (_, i) => ({
@@ -281,16 +288,32 @@ export default function CourseDetail() {
               {course.title}
             </h1>
 
-            {course.description && (
+            {description && (
               <p lang={lang} className="text-fg-3 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
-                {course.description}
+                {description}
               </p>
             )}
 
             <div ref={ctaRef} className="pt-2 sm:pt-4 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                <span className="font-display text-3xl sm:text-4xl font-black text-gold-600 dark:text-gold-400">{priceText}</span>
-                <span className="text-xs text-fg-3">{free ? "No payment required" : "Full lifetime masterclass access"}</span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-gold-600 dark:text-gold-400">
+                    {priceText}
+                  </span>
+                  {hasDiscount && (
+                    <span className="text-lg sm:text-xl text-fg-3 line-through font-semibold">
+                      {originalPriceText}
+                    </span>
+                  )}
+                  {hasDiscount && (
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                      {discountPercent}% OFF (Save {inr.format(savingsAmount)})
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-fg-3">
+                  {free ? "No payment required" : "Full lifetime masterclass access • One-time tuition, no recurring fees"}
+                </p>
               </div>
               <div>
                 {buyButton({ className: "w-full sm:w-auto min-h-12 sm:px-10 justify-center" })}
@@ -505,8 +528,24 @@ export default function CourseDetail() {
           <aside className="lg:sticky lg:top-24 space-y-6">
             <div className="card card-body p-5 sm:p-6 shadow-sm space-y-5 sm:space-y-6">
               <div>
-                <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-fg-3 font-bold">Tuition Investment</span>
-                <p className="font-display text-3xl sm:text-4xl font-black text-fg mt-1">{priceText}</p>
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-fg-3 font-bold">
+                  Tuition Investment
+                </span>
+                <div className="mt-1 flex items-baseline gap-2.5 flex-wrap">
+                  <p className="font-display text-3xl sm:text-4xl font-black text-fg">{priceText}</p>
+                  {hasDiscount && (
+                    <span className="text-base sm:text-lg text-fg-3 line-through font-semibold">
+                      {originalPriceText}
+                    </span>
+                  )}
+                </div>
+                {hasDiscount && (
+                  <div className="mt-2">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                      {discountPercent}% OFF • Save {inr.format(savingsAmount)}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {buyButton({ className: "w-full py-3.5 sm:py-4 justify-center" })}
@@ -591,7 +630,14 @@ export default function CourseDetail() {
           <div className="container-page flex items-center justify-between gap-3">
             <div>
               <p className="text-[10px] uppercase font-bold text-fg-3 tracking-wider">Tuition</p>
-              <p className="font-display text-lg font-black text-fg leading-none">{priceText}</p>
+              <div className="flex items-baseline gap-1.5">
+                <p className="font-display text-lg font-black text-fg leading-none">{priceText}</p>
+                {hasDiscount && (
+                  <span className="text-xs text-fg-3 line-through font-medium leading-none">
+                    {originalPriceText}
+                  </span>
+                )}
+              </div>
               {!free && <SecurePayment variant="bar" />}
             </div>
             <div>
