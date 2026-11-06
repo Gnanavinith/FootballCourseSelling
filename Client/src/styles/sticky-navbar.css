@@ -47,16 +47,26 @@
 /* Scrolled state (scrollY >= 10, or menu open, or non-home pages) */
 .navbar-scrolled {
   background-color: #06090e !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  color: #ffffff !important;
 }
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .navbar-scrolled {
-    background-color: rgba(6, 9, 14, 0.98) !important;
+    background-color: rgba(6, 9, 14, 0.96) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   }
+}
+
+/* Ensure navbar menu links have optimal legibility and contrast on sticky dark backdrop */
+.navbar-scrolled nav a {
+  color: #ffffff;
+}
+
+.navbar-scrolled nav a:hover {
+  text-decoration: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

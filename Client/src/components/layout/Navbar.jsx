@@ -52,8 +52,8 @@ const getIconBtn = (transparent = false) =>
   "relative flex shrink-0 items-center justify-center rounded-full transition-colors duration-200 " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 motion-reduce:transition-none " +
   (transparent
-    ? "border border-ink-950/20 bg-transparent text-ink-950 hover:border-ink-950/40 hover:bg-black/5 hover:text-black dark:border-white/15 dark:text-ink-200 dark:hover:border-white/30 dark:hover:bg-white/5 dark:hover:text-white"
-    : "border border-white/15 bg-transparent text-ink-200 hover:border-white/30 hover:bg-white/5 hover:text-white");
+    ? "border border-ink-950/20 bg-transparent text-ink-950 hover:border-ink-950/40 hover:bg-black/5 hover:text-black dark:border-white/20 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/10 dark:hover:text-white"
+    : "border border-white/20 bg-white/5 text-white hover:border-white/40 hover:bg-white/15 hover:text-white dark:border-white/25 dark:text-white dark:hover:bg-white/20");
 const iconBtn = getIconBtn(false);
 const iconSize = "h-10 w-10 md:h-9 md:w-9";
 
@@ -480,29 +480,29 @@ export default function Navbar({ user = null }) {
                 key={l.to}
                 to={l.to}
                 end={l.end}
-                className="group relative py-2 text-[0.9rem] font-medium tracking-wide no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded-sm"
+                className="group relative py-2 text-[0.92rem] font-medium tracking-wide no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded-sm"
               >
                 {({ isActive }) => (
                   <>
                     <span
                       className={`transition-colors duration-200 motion-reduce:transition-none ${
                         isActive
-                          ? "font-semibold text-gold-500 dark:text-gold-400"
+                          ? "font-bold text-gold-400 dark:text-gold-400"
                           : isTransparent
-                            ? "text-ink-900 hover:text-black dark:text-ink-300 dark:hover:text-white"
-                            : "text-ink-300 group-hover:text-white"
+                            ? "text-ink-950 hover:text-black dark:text-white dark:hover:text-gold-400"
+                            : "text-white/90 hover:text-white dark:text-white dark:hover:text-gold-400"
                       }`}
                     >
                       {l.label}
                     </span>
                     <span
                       aria-hidden="true"
-                      className={`absolute inset-x-0 -bottom-0.5 h-px origin-left transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                      className={`absolute inset-x-0 -bottom-0.5 h-0.5 origin-left transition-transform duration-300 ease-out motion-reduce:transition-none ${
                         isActive
-                          ? "scale-x-100 bg-gold-500 dark:bg-gold-400"
+                          ? "scale-x-100 bg-gold-400"
                           : isTransparent
-                            ? "scale-x-0 bg-ink-950/70 dark:bg-white/70 group-hover:scale-x-100"
-                            : "scale-x-0 bg-white/70 group-hover:scale-x-100"
+                            ? "scale-x-0 bg-ink-950 dark:bg-gold-400 group-hover:scale-x-100"
+                            : "scale-x-0 bg-gold-400 group-hover:scale-x-100"
                       }`}
                     />
                   </>
@@ -526,7 +526,7 @@ export default function Navbar({ user = null }) {
                   className={`btn btn-sm ${
                     isTransparent
                       ? "border border-ink-950/20 bg-black/5 text-ink-950 hover:border-ink-950/40 hover:bg-black/10 dark:border-white/20 dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/15"
-                      : "btn-outline-light"
+                      : "border border-white/25 bg-white/10 text-white hover:bg-white/20 hover:border-white/40 dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
                   }`}
                 >
                   Login
@@ -606,15 +606,15 @@ export default function Navbar({ user = null }) {
                       end={l.end}
                       onClick={() => setOpen(false)}
                       className={({ isActive }) =>
-                        `flex items-center justify-between border-b border-white/5 py-3.5 text-lg font-semibold no-underline transition-colors duration-200 hover:no-underline ${
-                          isActive ? "text-gold-400" : "text-ink-200 hover:text-white"
+                        `flex items-center justify-between border-b border-white/10 py-3.5 text-lg font-bold no-underline transition-colors duration-200 hover:no-underline ${
+                          isActive ? "text-gold-400" : "text-white/90 hover:text-white dark:text-white"
                         }`
                       }
                     >
                       {({ isActive }) => (
                         <>
                           {l.label}
-                          <ChevronRight className={`h-4 w-4 ${isActive ? "text-gold-400" : "text-ink-400"}`} aria-hidden="true" />
+                          <ChevronRight className={`h-4 w-4 ${isActive ? "text-gold-400" : "text-white/60"}`} aria-hidden="true" />
                         </>
                       )}
                     </NavLink>
