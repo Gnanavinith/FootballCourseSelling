@@ -1,8 +1,8 @@
 import { createContext, useContext, useLayoutEffect, useState } from 'react'
 
 const ThemeContext = createContext({
-  theme: 'dark',
-  isDark: true,
+  theme: 'light',
+  isDark: false,
   toggleTheme: () => {},
   setTheme: () => {},
 })
@@ -15,8 +15,8 @@ export function ThemeProvider({ children }) {
     } catch {
       // ignore localStorage errors
     }
-    // Default to dark stadium mode
-    return 'dark'
+    // Default to clean white/light theme
+    return 'light'
   })
 
   // Apply the theme class synchronously before paint so there's no flash of the

@@ -17,7 +17,8 @@
         try {
           const saved = localStorage.getItem('theme');
           const root = document.documentElement;
-          const isDark = saved === 'dark' || (!saved && saved !== 'light');
+          // Default to light (white theme) first unless user explicitly set dark
+          const isDark = saved === 'dark';
           if (isDark) {
             root.classList.add('dark');
             root.classList.remove('light');
