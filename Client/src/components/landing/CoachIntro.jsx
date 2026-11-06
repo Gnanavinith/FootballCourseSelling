@@ -56,10 +56,7 @@ export default function CoachIntro() {
               />
             </div>
 
-            {/* Floating Credential Tag */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-bold text-fg shadow-sm backdrop-blur-md">
-              ⚽ Coach Prasanth • 79.9K+ Ballers Mentored
-            </div>
+           
           </div>
 
           {/* Right: Emotional Story & Philosophy */}

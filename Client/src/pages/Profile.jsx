@@ -63,11 +63,11 @@ function Toast({ message, error, onDismiss }) {
 function Section({ title, children }) {
   return (
     <Reveal>
-      <section className="card">
-        <div className="border-b border-line px-6 py-4">
+      <section className="card rounded-2xl border border-line bg-surface shadow-sm overflow-hidden">
+        <div className="border-b border-line px-6 py-4 bg-surface-2/40">
           <h2 className="font-display text-base font-bold text-fg">{title}</h2>
         </div>
-        <div className="card-body">{children}</div>
+        <div className="card-body p-6">{children}</div>
       </section>
     </Reveal>
   )
@@ -197,36 +197,38 @@ export default function Profile() {
   )
 
   return (
-    <main>
-      <section className="section-dark hero-bg">
-        <div className="container-page pb-20 pt-8 md:pb-28 md:pt-14">
-          <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-sm text-ink-400 hover:text-white no-underline hover:no-underline mb-4 animate-fade-up">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-            Dashboard
-          </Link>
-          <div className="mt-2 flex items-center justify-between gap-3 animate-fade-up">
-            <p className="text-small font-semibold uppercase tracking-widest text-gold-400">Account</p>
+    <main className="min-h-screen bg-page text-fg-body font-sans">
+      <section className="relative overflow-hidden bg-surface py-10 sm:py-14 border-b border-line">
+        <div className="container-page">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-fg-3 hover:text-fg no-underline">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+              Dashboard
+            </Link>
             <ThemeToggle compact />
           </div>
-          <h1 className="mt-2 animate-fade-up" style={{ animationDelay: '80ms' }}>
-            Your <span className="text-gradient">Profile</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/25 bg-gold-400/10 px-3 py-1 text-xs font-bold text-gold-600 dark:text-gold-400 uppercase tracking-wider mb-3">
+            <span>Account Settings</span>
+          </div>
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-fg">
+            Your <span className="text-gold-600 dark:text-gold-400">Profile</span>
           </h1>
-          <p className="text-lead mt-3 animate-fade-up" style={{ animationDelay: '160ms' }}>
-            Manage your personal information and account settings.
+          <p className="mt-3 max-w-2xl text-sm sm:text-base text-fg-3 leading-relaxed">
+            Manage your personal athlete information, credentials, and security preferences.
           </p>
         </div>
       </section>
 
-      <div className="container-page relative z-10 -mt-12 pb-16 md:-mt-16">
+      <div className="container-page py-8 sm:py-12">
         <div className="mx-auto max-w-2xl space-y-6">
           {/* Avatar card */}
           <Reveal>
-            <div className="card card-body flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6">
+            <div className="card card-body flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6 rounded-2xl border border-line bg-surface p-6 shadow-sm">
               <Avatar user={displayUser} size="xl" />
               <div className="flex-1 text-center sm:text-left">
                 <p className="font-display text-xl font-bold text-fg">{user?.name || 'Student'}</p>
                 <p className="text-sm text-fg-3">{user?.email}</p>
-                <p className="mt-2 inline-flex rounded-full bg-tint-gold px-3 py-1 text-xs font-bold text-on-tint-gold">
+                <p className="mt-2 inline-flex rounded-full border border-gold-400/25 bg-gold-400/10 px-3 py-1 text-xs font-bold text-gold-600 dark:text-gold-400">
                   {user?.role === 'admin' || user?.role === 'superadmin' ? 'Admin' : 'Student'}
                 </p>
 

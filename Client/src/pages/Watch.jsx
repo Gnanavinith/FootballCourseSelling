@@ -120,22 +120,22 @@ export default function Watch() {
   return (
     <div className="min-h-screen bg-page text-fg font-sans flex flex-col selection:bg-gold-400 selection:text-black transition-colors duration-200">
       {/* Cinematic Top Theater Header */}
-      <header className="bg-surface/95 dark:bg-zinc-950/95 backdrop-blur-xl border-b border-line dark:border-zinc-800 px-3.5 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between sticky top-16 z-30 shadow-xs dark:shadow-2xl transition-colors duration-200">
+      <header className="bg-surface/95 backdrop-blur-xl border-b border-line px-3.5 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between sticky top-16 z-30 shadow-xs transition-colors duration-200">
         <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 pr-2">
           <Link
             to="/dashboard"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-fg-2 hover:text-fg bg-surface-2 hover:bg-surface px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-line transition dark:text-zinc-300 dark:hover:text-white dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:border-zinc-800 shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-fg-2 hover:text-fg bg-surface-2 hover:bg-surface px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-line transition shrink-0"
             title="Back to Academy Hub"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="hidden xs:inline">Hub</span>
           </Link>
-          <div className="h-4 sm:h-5 w-[1px] bg-line dark:bg-zinc-800 shrink-0"></div>
+          <div className="h-4 sm:h-5 w-[1px] bg-line shrink-0"></div>
           <div className="min-w-0">
-            <h1 className="text-xs sm:text-sm font-black text-fg dark:text-white truncate max-w-[150px] xs:max-w-[220px] sm:max-w-md">
+            <h1 className="font-display text-xs sm:text-sm font-black text-fg truncate max-w-[150px] xs:max-w-[220px] sm:max-w-md">
               {course.title}
             </h1>
-            <p className="text-[10px] sm:text-[11px] text-fg-3 dark:text-zinc-400 truncate">
+            <p className="text-[10px] sm:text-[11px] text-fg-3 truncate">
               Module {currentWeek} of {course.totalWeeks || weeks.length}
             </p>
           </div>
@@ -157,20 +157,20 @@ export default function Watch() {
         <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           {/* Payment Warning Banner */}
           {!paid && (
-            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-4 sm:p-6 text-amber-700 dark:text-amber-200 shadow-card dark:shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-amber-500/10 p-4 sm:p-6 text-amber-700 dark:text-amber-300 shadow-sm">
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className="p-2.5 sm:p-3 bg-amber-500 text-black rounded-xl sm:rounded-2xl shadow-lg shrink-0">
+                <div className="p-2.5 sm:p-3 bg-amber-500 text-black rounded-xl sm:rounded-2xl shadow-md shrink-0">
                   <Lock className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-sm sm:text-base font-bold text-fg dark:text-white">Masterclass Stream Restricted</h2>
+                  <h2 className="font-display text-sm sm:text-base font-bold text-fg">Masterclass Stream Restricted</h2>
                   <p className="mt-1 text-xs text-amber-800/80 dark:text-amber-200/80 leading-relaxed">
                     Enrollment required to stream high-definition football training masterclasses and tactical breakdowns.
                   </p>
                   <button
                     type="button"
                     onClick={buyCourse}
-                    className="mt-3.5 inline-flex items-center gap-1.5 sm:gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black px-4 sm:px-5 py-2 text-xs font-extrabold transition shadow-lg cursor-pointer"
+                    className="mt-3.5 inline-flex items-center gap-1.5 sm:gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black px-4 sm:px-5 py-2 text-xs font-extrabold transition shadow-md cursor-pointer"
                   >
                     <span>Enroll Now</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -181,7 +181,7 @@ export default function Watch() {
           )}
 
           {/* Cinematic Video Player Container */}
-          <div className="rounded-2xl sm:rounded-3xl bg-black overflow-hidden shadow-card dark:shadow-2xl border border-line dark:border-zinc-800 relative aspect-video flex items-center justify-center group">
+          <div className="rounded-2xl sm:rounded-3xl bg-black overflow-hidden shadow-sm border border-line relative aspect-video flex items-center justify-center group">
             {paid ? (
               url ? (
                 <video
@@ -192,12 +192,12 @@ export default function Watch() {
                   className="h-full w-full object-contain"
                 />
               ) : (
-                <div className="h-full w-full flex flex-col items-center justify-center text-fg-3 dark:text-zinc-400 bg-surface-2 dark:bg-zinc-950 p-6 sm:p-8 text-center transition-colors">
-                  <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-surface border border-line dark:bg-zinc-900 dark:border-zinc-800 flex items-center justify-center text-gold-500 dark:text-gold-400 mb-3 sm:mb-4 shadow-sm group-hover:scale-110 transition-transform">
+                <div className="h-full w-full flex flex-col items-center justify-center text-fg-3 bg-surface-2 p-6 sm:p-8 text-center transition-colors">
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-surface border border-line flex items-center justify-center text-gold-500 dark:text-gold-400 mb-3 sm:mb-4 shadow-sm group-hover:scale-110 transition-transform">
                     <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-current ml-0.5 sm:ml-1" />
                   </div>
-                  <p className="text-xs sm:text-sm font-bold text-fg dark:text-white">Select a lesson from the playlist below</p>
-                  <p className="text-[11px] sm:text-xs text-fg-3 dark:text-zinc-500 mt-1">Cinematic 1080p sports training video</p>
+                  <p className="text-xs sm:text-sm font-bold text-fg">Select a lesson from the playlist below</p>
+                  <p className="text-[11px] sm:text-xs text-fg-3 mt-1">Cinematic 1080p sports training video</p>
                 </div>
               )
             ) : (
@@ -229,14 +229,14 @@ export default function Watch() {
 
           {/* Active Lesson Strip & Quick Controls */}
           {currentVideo && (
-            <div className="flex items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 text-xs shadow-xs transition-colors">
+            <div className="flex items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-surface border border-line text-xs shadow-xs transition-colors">
               <div className="flex items-center gap-2.5 min-w-0">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-gold-400 font-black text-xs text-ink-950 shadow-xs">
                   {currentIndex + 1}
                 </span>
                 <div className="min-w-0">
-                  <p className="font-bold text-fg dark:text-white truncate text-xs sm:text-sm">{currentVideo.title}</p>
-                  <span className="text-[11px] text-fg-3 dark:text-zinc-400 flex items-center gap-1 mt-0.5">
+                  <p className="font-bold text-fg truncate text-xs sm:text-sm">{currentVideo.title}</p>
+                  <span className="text-[11px] text-fg-3 flex items-center gap-1 mt-0.5">
                     <Clock className="w-3 h-3 text-gold-500 shrink-0" /> {fmt(currentVideo.durationSeconds || 0)}
                   </span>
                 </div>
@@ -246,7 +246,7 @@ export default function Watch() {
                   type="button"
                   onClick={() => prevVideo && play(prevVideo)}
                   disabled={!prevVideo}
-                  className="p-2 rounded-xl border border-line dark:border-zinc-800 bg-surface-2 dark:bg-zinc-950 text-fg disabled:opacity-30 disabled:cursor-not-allowed hover:bg-surface transition cursor-pointer"
+                  className="p-2 rounded-xl border border-line bg-surface-2 text-fg disabled:opacity-30 disabled:cursor-not-allowed hover:bg-surface transition cursor-pointer"
                   title="Previous lesson"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -266,14 +266,14 @@ export default function Watch() {
           )}
 
           {/* Mobile Navigation Tabs (visible only on mobile screens < lg) */}
-          <div className="lg:hidden flex rounded-2xl border border-line dark:border-zinc-800 bg-surface-2/60 dark:bg-zinc-950/60 p-1 gap-1">
+          <div className="lg:hidden flex rounded-2xl border border-line bg-surface-2/60 p-1 gap-1">
             <button
               type="button"
               onClick={() => setMobileTab("playlist")}
               className={`flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 mobileTab === "playlist"
-                  ? "bg-surface dark:bg-zinc-900 text-fg dark:text-white shadow-xs"
-                  : "text-fg-3 dark:text-zinc-400 hover:text-fg"
+                  ? "bg-surface text-fg shadow-xs"
+                  : "text-fg-3 hover:text-fg"
               }`}
             >
               <Film className="w-3.5 h-3.5 text-gold-500" />
@@ -284,8 +284,8 @@ export default function Watch() {
               onClick={() => setMobileTab("modules")}
               className={`flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 mobileTab === "modules"
-                  ? "bg-surface dark:bg-zinc-900 text-fg dark:text-white shadow-xs"
-                  : "text-fg-3 dark:text-zinc-400 hover:text-fg"
+                  ? "bg-surface text-fg shadow-xs"
+                  : "text-fg-3 hover:text-fg"
               }`}
             >
               <Layers className="w-3.5 h-3.5 text-gold-500" />
@@ -296,8 +296,8 @@ export default function Watch() {
               onClick={() => setMobileTab("overview")}
               className={`flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 mobileTab === "overview"
-                  ? "bg-surface dark:bg-zinc-900 text-fg dark:text-white shadow-xs"
-                  : "text-fg-3 dark:text-zinc-400 hover:text-fg"
+                  ? "bg-surface text-fg shadow-xs"
+                  : "text-fg-3 hover:text-fg"
               }`}
             >
               <BookOpen className="w-3.5 h-3.5 text-gold-500" />
@@ -308,13 +308,13 @@ export default function Watch() {
           {/* Mobile Switchable Content Area (lg:hidden) */}
           <div className="lg:hidden space-y-4">
             {mobileTab === "playlist" && (
-              <div className="bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-2xl p-4 shadow-card space-y-3">
-                <div className="flex items-center justify-between pb-3 border-b border-line dark:border-zinc-800">
-                  <h3 className="text-xs font-extrabold uppercase tracking-wider text-fg dark:text-white flex items-center gap-2">
+              <div className="bg-surface border border-line rounded-2xl p-4 shadow-sm space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-line">
+                  <h3 className="text-xs font-extrabold uppercase tracking-wider text-fg flex items-center gap-2">
                     <Film className="w-4 h-4 text-gold-500" />
                     <span>Module {currentWeek} Lessons</span>
                   </h3>
-                  <span className="text-[11px] text-fg-3 dark:text-zinc-400 font-bold">
+                  <span className="text-[11px] text-fg-3 font-bold">
                     {videos.length} drills
                   </span>
                 </div>
@@ -330,24 +330,24 @@ export default function Watch() {
                         disabled={isLocked || !paid}
                         className={`w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all cursor-pointer ${
                           playing
-                            ? "border-gold-400 bg-gold-400/10 text-fg dark:text-white font-bold"
-                            : "border-line bg-surface-2/60 hover:bg-surface text-fg-2 hover:text-fg dark:border-zinc-800 dark:bg-zinc-950"
+                            ? "border-gold-400 bg-gold-400/10 text-fg font-bold"
+                            : "border-line bg-surface-2/60 hover:bg-surface text-fg-2 hover:text-fg"
                         }`}
                       >
                         <div
                           className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${
                             playing
-                              ? "bg-gold-400 text-black shadow-glow"
-                              : "bg-surface-2 text-fg-3 border border-line dark:bg-zinc-900 dark:border-transparent"
+                              ? "bg-gold-400 text-black shadow-xs"
+                              : "bg-surface-2 text-fg-3 border border-line"
                           }`}
                         >
                           {index + 1}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className={`text-xs truncate font-bold ${playing ? "text-gold-600 dark:text-gold-400" : "text-fg dark:text-white"}`}>
+                          <p className={`text-xs truncate font-bold ${playing ? "text-gold-600 dark:text-gold-400" : "text-fg"}`}>
                             {v.title}
                           </p>
-                          <span className="text-[11px] text-fg-3 dark:text-zinc-400 flex items-center gap-1 mt-0.5">
+                          <span className="text-[11px] text-fg-3 flex items-center gap-1 mt-0.5">
                             <Clock className="w-3 h-3 text-gold-500 shrink-0" /> {fmt(v.durationSeconds || 0)}
                           </span>
                         </div>
@@ -369,8 +369,8 @@ export default function Watch() {
             )}
 
             {mobileTab === "modules" && (
-              <div className="bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-2xl p-4 shadow-card space-y-3">
-                <h3 className="text-xs font-extrabold uppercase tracking-wider text-fg-3 dark:text-zinc-400 px-1">
+              <div className="bg-surface border border-line rounded-2xl p-4 shadow-sm space-y-3">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-fg-3 px-1">
                   Switch Training Module
                 </h3>
                 <div className="grid grid-cols-4 gap-2">
@@ -393,8 +393,8 @@ export default function Watch() {
                           active
                             ? "border-gold-400 bg-gold-400 text-black font-black shadow-xs"
                             : locked || !paid
-                            ? "border-line/60 bg-surface-2/40 text-fg-3/60 opacity-50 cursor-not-allowed dark:border-zinc-800 dark:bg-zinc-950"
-                            : "border-line bg-surface-2 text-fg-2 hover:bg-surface dark:border-zinc-800 dark:bg-zinc-950"
+                            ? "border-line/60 bg-surface-2/40 text-fg-3/60 opacity-50 cursor-not-allowed"
+                            : "border-line bg-surface-2 text-fg-2 hover:bg-surface"
                         }`}
                       >
                         <span className="text-[11px] font-black">M{w.weekNumber}</span>
@@ -411,24 +411,24 @@ export default function Watch() {
             )}
 
             {mobileTab === "overview" && (
-              <div className="bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-2xl p-4 sm:p-6 shadow-card space-y-3.5">
+              <div className="bg-surface border border-line rounded-2xl p-4 sm:p-6 shadow-sm space-y-3.5">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-extrabold uppercase tracking-wider text-gold-600 dark:text-gold-400 bg-gold-400/10 px-2.5 py-0.5 rounded-full border border-gold-400/20">
                     Module {currentWeek}
                   </span>
-                  <span className="text-xs text-fg-3 dark:text-zinc-400 flex items-center gap-1">
+                  <span className="text-xs text-fg-3 flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5 text-gold-500" /> {videos.length} drills
                   </span>
                 </div>
-                <h2 className="text-base sm:text-lg font-black text-fg dark:text-white">
+                <h2 className="font-display text-base sm:text-lg font-black text-fg">
                   {current.title || `Training Module ${currentWeek}`}
                 </h2>
-                <p className="text-xs text-fg-3 dark:text-zinc-400 leading-relaxed">
+                <p className="text-xs text-fg-3 leading-relaxed">
                   {current.description || "Master elite techniques, tactical positioning, and professional conditioning drills taught in this module."}
                 </p>
 
                 {hasSyllabus && (
-                  <div className="pt-3 border-t border-line dark:border-zinc-800 flex flex-wrap gap-2">
+                  <div className="pt-3 border-t border-line flex flex-wrap gap-2">
                     <button
                       type="button"
                       onClick={() => setSyllabusOpen(true)}
@@ -441,7 +441,7 @@ export default function Watch() {
                       <a
                         href={`/api/courses/${course._id}/syllabus/file`}
                         download={`${course.slug || 'course'}-syllabus.pdf`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-xl border border-line transition dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:text-white dark:border-zinc-800"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-xl border border-line transition"
                       >
                         <Download className="w-3.5 h-3.5 text-gold-500" />
                         <span>PDF</span>
@@ -454,27 +454,27 @@ export default function Watch() {
           </div>
 
           {/* Desktop Module Overview Card (hidden on mobile, visible on lg screens) */}
-          <div className="hidden lg:block bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-3xl p-6 lg:p-8 shadow-card dark:shadow-2xl space-y-4 transition-colors">
+          <div className="hidden lg:block bg-surface border border-line rounded-3xl p-6 lg:p-8 shadow-sm space-y-4 transition-colors">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold uppercase tracking-widest text-gold-600 dark:text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/20">
                 Module {currentWeek} Overview
               </span>
-              <span className="text-xs text-fg-3 dark:text-zinc-400 flex items-center gap-1.5">
+              <span className="text-xs text-fg-3 flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-gold-500 dark:text-gold-400" /> {videos.length} Masterclass Lessons
               </span>
             </div>
             <div>
-              <h2 className="text-xl font-black text-fg dark:text-white">
+              <h2 className="font-display text-xl font-black text-fg">
                 {current.title || `Training Module ${currentWeek}`}
               </h2>
-              <p className="text-xs text-fg-3 dark:text-zinc-400 mt-2 leading-relaxed">
+              <p className="text-xs text-fg-3 mt-2 leading-relaxed">
                 {current.description || "Master elite techniques, tactical positioning, and professional conditioning drills taught in this module."}
               </p>
             </div>
 
             {/* Syllabus & Resource Downloads */}
             {hasSyllabus && (
-              <div className="pt-4 border-t border-line dark:border-zinc-800 flex flex-wrap gap-3">
+              <div className="pt-4 border-t border-line flex flex-wrap gap-3">
                 <button
                   type="button"
                   onClick={() => setSyllabusOpen(true)}
@@ -487,7 +487,7 @@ export default function Watch() {
                   <a
                     href={`/api/courses/${course._id}/syllabus/file`}
                     download={`${course.slug || 'course'}-syllabus.pdf`}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-2xl border border-line transition dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:text-white dark:border-zinc-800"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-2xl border border-line transition"
                   >
                     <Download className="w-4 h-4 text-gold-500 dark:text-gold-400" />
                     <span>Download Syllabus PDF</span>
@@ -499,7 +499,7 @@ export default function Watch() {
                     href={doc.url || doc}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-2xl border border-line transition dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:text-white dark:border-zinc-800"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-surface-2 hover:bg-surface text-fg text-xs font-bold rounded-2xl border border-line transition"
                   >
                     <Download className="w-4 h-4 text-gold-500 dark:text-gold-400" />
                     <span>{doc.name || `Resource ${idx + 1}`}</span>
@@ -513,8 +513,8 @@ export default function Watch() {
         {/* Right Sidebar: Module Selector & Video Playlist (Desktop) */}
         <div className="hidden lg:block space-y-6">
           {/* Module Selector Tabs */}
-          <div className="bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-3xl p-5 shadow-card dark:shadow-2xl transition-colors">
-            <h3 className="text-xs font-extrabold uppercase tracking-widest text-fg-3 dark:text-zinc-400 mb-3 px-1">Curriculum Modules</h3>
+          <div className="bg-surface border border-line rounded-3xl p-5 shadow-sm transition-colors">
+            <h3 className="font-display text-xs font-extrabold uppercase tracking-widest text-fg-3 mb-3 px-1">Curriculum Modules</h3>
             <div className="grid grid-cols-4 gap-2">
               {weeks.map((w) => {
                 const active = w.weekNumber === currentWeek;
@@ -531,10 +531,10 @@ export default function Watch() {
                     disabled={locked || !paid}
                     className={`flex flex-col items-center justify-center p-3 rounded-2xl border transition-all cursor-pointer ${
                       active
-                        ? "border-gold-400 bg-gold-400 text-black shadow-glow font-black"
+                        ? "border-gold-400 bg-gold-400 text-black shadow-xs font-black"
                         : locked || !paid
-                        ? "border-line/60 bg-surface-2/40 text-fg-3/60 opacity-50 cursor-not-allowed dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-600"
-                        : "border-line bg-surface-2 hover:border-line-strong hover:bg-surface text-fg-2 hover:text-fg dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:text-white"
+                        ? "border-line/60 bg-surface-2/40 text-fg-3/60 opacity-50 cursor-not-allowed"
+                        : "border-line bg-surface-2 hover:border-line-strong hover:bg-surface text-fg-2 hover:text-fg"
                     }`}
                   >
                     <span className="text-xs font-black">M{w.weekNumber}</span>
@@ -550,13 +550,13 @@ export default function Watch() {
           </div>
 
           {/* Masterclass Lessons Playlist */}
-          <div className="bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-3xl p-6 shadow-card dark:shadow-2xl flex flex-col h-[460px] transition-colors">
-            <div className="flex items-center justify-between pb-4 border-b border-line dark:border-zinc-800 mb-4">
-              <h3 className="text-xs font-extrabold uppercase tracking-widest text-fg dark:text-white flex items-center gap-2">
+          <div className="bg-surface border border-line rounded-3xl p-6 shadow-sm flex flex-col h-[460px] transition-colors">
+            <div className="flex items-center justify-between pb-4 border-b border-line mb-4">
+              <h3 className="font-display text-xs font-extrabold uppercase tracking-widest text-fg flex items-center gap-2">
                 <Film className="w-4 h-4 text-gold-500 dark:text-gold-400" />
                 <span>Module {currentWeek} Playlist</span>
               </h3>
-              <span className="text-xs text-fg-3 dark:text-zinc-400 font-bold">
+              <span className="text-xs text-fg-3 font-bold">
                 {videos.length} sessions
               </span>
             </div>
@@ -573,34 +573,34 @@ export default function Watch() {
                     disabled={isLocked || !paid}
                     className={`w-full flex items-center gap-3 p-3.5 rounded-2xl border text-left transition-all cursor-pointer group ${
                       playing
-                        ? "border-gold-400 bg-gold-400/10 text-fg dark:text-white shadow-md font-bold"
-                        : "border-line bg-surface-2/60 hover:border-line-strong hover:bg-surface text-fg-2 hover:text-fg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:text-zinc-300"
+                        ? "border-gold-400 bg-gold-400/10 text-fg shadow-xs font-bold"
+                        : "border-line bg-surface-2/60 hover:border-line-strong hover:bg-surface text-fg-2 hover:text-fg"
                     }`}
                   >
                     <div className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${
                       playing
-                        ? "bg-gold-400 text-black shadow-glow"
-                        : "bg-surface-2 text-fg-3 group-hover:bg-surface group-hover:text-fg border border-line dark:bg-zinc-900 dark:text-zinc-400 dark:group-hover:bg-zinc-800 dark:group-hover:text-white dark:border-transparent"
+                        ? "bg-gold-400 text-black shadow-xs"
+                        : "bg-surface-2 text-fg-3 group-hover:bg-surface group-hover:text-fg border border-line"
                     }`}>
                       {index + 1}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className={`text-xs truncate font-bold ${playing ? "text-gold-600 dark:text-gold-400" : "text-fg dark:text-white"}`}>{v.title}</p>
-                      <span className="text-[11px] text-fg-3 dark:text-zinc-400 flex items-center gap-1 mt-0.5">
+                      <p className={`text-xs truncate font-bold ${playing ? "text-gold-600 dark:text-gold-400" : "text-fg"}`}>{v.title}</p>
+                      <span className="text-[11px] text-fg-3 flex items-center gap-1 mt-0.5">
                         <Clock className="w-3 h-3 text-gold-500 dark:text-gold-400" /> {fmt(v.durationSeconds || 0)}
                       </span>
                     </div>
                     {playing ? (
-                      <span className="w-2.5 h-2.5 rounded-full bg-gold-400 animate-ping shrink-0 shadow-glow" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-gold-400 animate-ping shrink-0" />
                     ) : (
-                      <Play className="w-3.5 h-3.5 text-fg-3 dark:text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                      <Play className="w-3.5 h-3.5 text-fg-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                     )}
                   </button>
                 );
               })}
 
               {videos.length === 0 && (
-                <div className="h-full flex flex-col items-center justify-center text-center p-6 text-fg-3 dark:text-zinc-500 text-xs">
+                <div className="h-full flex flex-col items-center justify-center text-center p-6 text-fg-3 text-xs">
                   <Film className="w-8 h-8 opacity-40 mb-2" />
                   <p>No masterclass lessons available for this module yet.</p>
                 </div>

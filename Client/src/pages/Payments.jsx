@@ -69,13 +69,13 @@ function OrderId({ id }) {
 
 function StatCard({ label, value, loading, icon: Icon }) {
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 px-5 py-4 shadow-sm flex items-center justify-between">
+    <div className="bg-surface-2 rounded-2xl border border-line px-5 py-4 shadow-sm flex items-center justify-between">
       <div>
-        <dt className="text-xs font-medium text-zinc-300">{label}</dt>
-        <dd className="font-display text-2xl lg:text-3xl font-black text-white mt-1">{loading ? "–" : value}</dd>
+        <dt className="text-xs font-medium text-fg-3">{label}</dt>
+        <dd className="font-display text-2xl lg:text-3xl font-black text-fg mt-1">{loading ? "–" : value}</dd>
       </div>
       {Icon && (
-        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-gold-400">
+        <div className="w-10 h-10 rounded-xl bg-gold-400/10 flex items-center justify-center text-gold-500 dark:text-gold-400">
           <Icon className="w-5 h-5" />
         </div>
       )}
@@ -124,23 +124,26 @@ export default function Payments() {
   const visible = filter === "all" ? orders : orders.filter((o) => statusOf(o).label === filter);
 
   return (
-    <div className="min-h-screen bg-surface-2 font-sans flex flex-col">
+    <div className="min-h-screen bg-page text-fg-body font-sans flex flex-col">
       {/* Hero Header Banner */}
-      <section className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16 relative z-10">
-          <div className="flex items-center justify-between mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pitch-600/20 border border-pitch-500/30 text-pitch-400 text-xs font-bold uppercase tracking-wider">
+      <section className="relative overflow-hidden bg-surface py-10 sm:py-14 border-b border-line">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between mb-4">
+            <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-fg-3 hover:text-fg no-underline">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+              Dashboard
+            </Link>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-400/10 border border-gold-400/20 text-gold-600 dark:text-gold-400 text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Secure Transactions</span>
             </div>
           </div>
 
-          <h1 className="text-3xl lg:text-4xl font-black tracking-tight">
-            Payments & <span className="text-pitch-500">Invoices</span>
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-fg">
+            Payments &amp; <span className="text-gold-600 dark:text-gold-400">Invoices</span>
           </h1>
-          <p className="text-zinc-400 text-sm lg:text-base mt-2 max-w-xl">
-            View your order history, verified receipts, and payment status for all enrolled football training courses.
+          <p className="text-fg-3 text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
+            View your verified payment receipts, billing history, and Razorpay transaction IDs for all enrolled masterclasses.
           </p>
 
           <dl className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
@@ -152,33 +155,33 @@ export default function Payments() {
       </section>
 
       {/* Main Content Area */}
-      <div className="max-w-7xl w-full mx-auto px-6 -mt-8 relative z-20 pb-16 space-y-8">
+      <div className="max-w-7xl w-full mx-auto px-6 py-8 sm:py-12 relative z-20 space-y-8">
         {loading && (
-          <div className="bg-surface rounded-3xl border border-line p-12 text-center shadow-md">
-            <div className="w-10 h-10 border-4 border-pitch-600 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          <div className="bg-surface rounded-2xl border border-line p-12 text-center shadow-sm">
+            <div className="w-10 h-10 border-4 border-gold-400 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
             <p className="text-sm font-medium text-fg-3">Loading your payment records...</p>
           </div>
         )}
 
         {!loading && error && (
-          <div className="bg-surface rounded-3xl border border-line p-8 text-center max-w-md mx-auto shadow-md">
-            <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-            <h2 className="text-base font-bold text-fg mb-1">Could not load payments</h2>
-            <p className="text-sm text-red-600 mb-6">{error}</p>
-            <button type="button" className="px-5 py-2.5 bg-pitch-600 text-white font-semibold rounded-xl text-sm transition hover:bg-pitch-700" onClick={() => setAttempt((n) => n + 1)}>
+          <div className="bg-surface rounded-2xl border border-line p-8 text-center max-w-md mx-auto shadow-sm">
+            <AlertCircle className="w-12 h-12 text-danger-500 mx-auto mb-4" />
+            <h2 className="font-display text-base font-bold text-fg mb-1">Could not load payments</h2>
+            <p className="text-sm text-danger-500 mb-6">{error}</p>
+            <button type="button" className="btn btn-primary mx-auto" onClick={() => setAttempt((n) => n + 1)}>
               Try Again
             </button>
           </div>
         )}
 
         {!loading && !error && orders.length === 0 && (
-          <div className="bg-surface rounded-3xl border border-line p-16 text-center max-w-lg mx-auto shadow-md">
-            <div className="w-16 h-16 rounded-2xl bg-pitch-600/10 text-pitch-600 flex items-center justify-center mx-auto mb-4">
+          <div className="bg-surface rounded-2xl border border-line p-12 sm:p-16 text-center max-w-lg mx-auto shadow-sm">
+            <div className="w-16 h-16 rounded-2xl bg-gold-400/10 text-gold-500 dark:text-gold-400 flex items-center justify-center mx-auto mb-4">
               <CreditCard className="w-8 h-8" />
             </div>
-            <h2 className="text-xl font-bold text-fg mb-2">No Transactions Yet</h2>
+            <h2 className="font-display text-xl font-bold text-fg mb-2">No Transactions Yet</h2>
             <p className="text-sm text-fg-3 mb-6">When you purchase a professional football course, your receipts and order IDs will appear here.</p>
-            <Link to="/courses" className="inline-flex items-center justify-center px-6 py-3 bg-pitch-600 hover:bg-pitch-700 text-white font-semibold rounded-xl text-sm transition shadow-md">
+            <Link to="/courses" className="btn btn-primary mx-auto">
               Explore Courses
             </Link>
           </div>
@@ -197,11 +200,11 @@ export default function Payments() {
                     onClick={() => setFilter(f.key)}
                     className={`px-4 py-2 rounded-2xl text-xs font-bold transition cursor-pointer border ${
                       active
-                        ? "bg-pitch-600 text-white border-pitch-600 shadow-xs"
-                        : "bg-surface text-fg-3 border-line hover:border-pitch-400 hover:text-fg"
+                        ? "bg-gold-400 text-black border-gold-400 shadow-xs"
+                        : "bg-surface text-fg-body border-line hover:border-gold-400/50 hover:text-fg"
                     }`}
                   >
-                    {f.label} <span className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] ${active ? "bg-white/20 text-white" : "bg-surface-2 text-fg-3"}`}>{counts[f.key] || 0}</span>
+                    {f.label} <span className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] ${active ? "bg-black/20 text-black" : "bg-surface-2 text-fg-3"}`}>{counts[f.key] || 0}</span>
                   </button>
                 );
               })}

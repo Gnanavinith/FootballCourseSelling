@@ -48,11 +48,11 @@ const toList = (res) => (Array.isArray(res) ? res : res?.data || res?.courses ||
 function SecurePayment({ variant = "inline" }) {
   if (variant === "hero") {
     return (
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs font-semibold text-ink-300">
-        <span className="inline-flex items-center gap-1.5 text-gold-400">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs font-semibold text-fg-3">
+        <span className="inline-flex items-center gap-1.5 text-gold-600 dark:text-gold-400">
           <Lock className="w-3.5 h-3.5" /> Secure checkout by Razorpay
         </span>
-        <span aria-hidden="true" className="hidden sm:inline text-ink-500">•</span>
+        <span aria-hidden="true" className="hidden sm:inline text-fg-3">•</span>
         <span>{PAYMENT_METHODS.join(" • ")}</span>
       </div>
     );
@@ -266,7 +266,7 @@ export default function CourseDetail() {
   return (
     <main className="min-h-screen bg-page text-fg-body font-sans transition-colors duration-300 pb-24 sm:pb-0 overflow-x-hidden">
       {/* Cinematic Hero Section */}
-      <section className="section-dark hero-bg py-10 sm:py-14 lg:py-20 border-b border-line">
+      <section className="relative overflow-hidden bg-surface py-10 sm:py-14 lg:py-16 border-b border-line">
         <div className="container-page relative z-10 grid gap-8 lg:gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           
           {/* Left: Course Info & CTAs */}
@@ -277,20 +277,20 @@ export default function CourseDetail() {
               {course.language && <span className="badge badge-gray">{course.language}</span>}
             </div>
 
-            <h1 lang={lang} className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight break-words">
+            <h1 lang={lang} className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-fg tracking-tight leading-tight break-words">
               {course.title}
             </h1>
 
             {course.description && (
-              <p lang={lang} className="text-ink-300 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
+              <p lang={lang} className="text-fg-3 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
                 {course.description}
               </p>
             )}
 
             <div ref={ctaRef} className="pt-2 sm:pt-4 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                <span className="font-display text-3xl sm:text-4xl font-black text-gold-400">{priceText}</span>
-                <span className="text-xs text-ink-300">{free ? "No payment required" : "Full lifetime masterclass access"}</span>
+                <span className="font-display text-3xl sm:text-4xl font-black text-gold-600 dark:text-gold-400">{priceText}</span>
+                <span className="text-xs text-fg-3">{free ? "No payment required" : "Full lifetime masterclass access"}</span>
               </div>
               <div>
                 {buyButton({ className: "w-full sm:w-auto min-h-12 sm:px-10 justify-center" })}
@@ -303,12 +303,12 @@ export default function CourseDetail() {
           </div>
 
           {/* Right: Media Card */}
-          <div className="order-1 lg:order-2 relative rounded-2xl sm:rounded-3xl overflow-hidden border border-line bg-surface shadow-pop aspect-video flex items-center justify-center group">
+          <div className="order-1 lg:order-2 relative rounded-2xl sm:rounded-3xl overflow-hidden border border-line bg-surface-2 shadow-sm aspect-video flex items-center justify-center group">
             {course.thumbnail ? (
               <img
                 src={course.thumbnail}
                 alt={course.thumbnailAlt || course.title}
-                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             ) : (
               <Play className="w-16 h-16 text-gold-400/80 animate-pulse" />
@@ -331,8 +331,8 @@ export default function CourseDetail() {
 
             {/* What you will learn / Outcomes */}
             {outcomes.length > 0 && (
-              <div className="card card-body p-5 sm:p-8 shadow-card space-y-5 sm:space-y-6">
-                <h2 className="text-lg sm:text-xl font-black text-fg flex items-center gap-2">
+              <div className="card card-body p-5 sm:p-8 shadow-sm space-y-5 sm:space-y-6">
+                <h2 className="font-display text-lg sm:text-xl font-black text-fg flex items-center gap-2">
                   <Target className="w-5 h-5 text-gold-600 dark:text-gold-400 shrink-0" /> What You Will Master
                 </h2>
                 <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2">
@@ -348,10 +348,10 @@ export default function CourseDetail() {
 
             {/* Admin Pasted Syllabus Content */}
             {course.syllabus && course.syllabus.trim() && (
-              <div className="card card-body p-5 sm:p-8 shadow-card space-y-4">
+              <div className="card card-body p-5 sm:p-8 shadow-sm space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-4">
                   <div>
-                    <h2 className="text-lg sm:text-xl font-black text-fg flex items-center gap-2">
+                    <h2 className="font-display text-lg sm:text-xl font-black text-fg flex items-center gap-2">
                       <FileText className="w-5 h-5 text-gold-600 dark:text-gold-400 shrink-0" /> Course Syllabus &amp; Curriculum
                     </h2>
                     <p className="mt-1 text-xs text-fg-3">
@@ -367,14 +367,14 @@ export default function CourseDetail() {
 
             {/* Official Syllabus PDF Document */}
             {course.syllabusUrl && (
-              <div className="card card-body p-5 sm:p-8 shadow-card space-y-4 border-l-4 border-l-gold-400">
+              <div className="card card-body p-5 sm:p-8 shadow-sm space-y-4 border-l-4 border-l-gold-400">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-4">
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-gold-400/20 text-gold-600 dark:text-gold-400 flex items-center justify-center shrink-0">
                       <FileText className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-fg">Official Syllabus Document</h3>
+                      <h3 className="font-display text-base sm:text-lg font-bold text-fg">Official Syllabus Document</h3>
                       <p className="text-xs text-fg-3">Verified course curriculum and training schedule uploaded by the coach.</p>
                     </div>
                   </div>
@@ -420,9 +420,9 @@ export default function CourseDetail() {
 
             {/* Weekly Modules */}
             {weeks > 0 && (
-              <div className="card card-body p-5 sm:p-8 shadow-card space-y-5 sm:space-y-6">
+              <div className="card card-body p-5 sm:p-8 shadow-sm space-y-5 sm:space-y-6">
                 <div className="flex items-center justify-between gap-2">
-                  <h2 className="text-lg sm:text-xl font-black text-fg flex items-center gap-2">
+                  <h2 className="font-display text-lg sm:text-xl font-black text-fg flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-gold-600 dark:text-gold-400 shrink-0" /> Weekly Modules ({weeks})
                   </h2>
                   <span className="text-[11px] sm:text-xs font-bold px-2.5 py-1 bg-surface-2 text-fg border border-line rounded-full shrink-0">
@@ -440,7 +440,7 @@ export default function CourseDetail() {
                       className="flex items-start sm:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-surface-2 border border-line transition hover:border-line-strong"
                     >
                       <div className="flex items-start sm:items-center gap-3 min-w-0">
-                        <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gold-400 text-ink-950 font-black text-xs flex items-center justify-center shrink-0 shadow-glow mt-0.5 sm:mt-0">
+                        <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gold-400 text-ink-950 font-black text-xs flex items-center justify-center shrink-0 shadow-xs mt-0.5 sm:mt-0">
                           M{w.n}
                         </span>
                         <div className="min-w-0">
@@ -468,9 +468,9 @@ export default function CourseDetail() {
             )}
 
             {/* Course Features / Included */}
-            <div className="card card-body p-5 sm:p-8 shadow-card space-y-5 sm:space-y-6">
-              <h2 className="text-lg sm:text-xl font-black text-fg flex items-center gap-2">
-                <Award className="w-5 h-5 text-gold-600 dark:text-gold-400 shrink-0" /> Masterclass Features & Perks
+            <div className="card card-body p-5 sm:p-8 shadow-sm space-y-5 sm:space-y-6">
+              <h2 className="font-display text-lg sm:text-xl font-black text-fg flex items-center gap-2">
+                <Award className="w-5 h-5 text-gold-600 dark:text-gold-400 shrink-0" /> Masterclass Features &amp; Perks
               </h2>
               <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2">
                 {features.map((f) => (
@@ -483,8 +483,8 @@ export default function CourseDetail() {
             </div>
 
             {/* Common Questions */}
-            <div className="card card-body p-5 sm:p-8 shadow-card space-y-4">
-              <h2 className="text-lg sm:text-xl font-black text-fg mb-3 sm:mb-4">Frequently Asked Questions</h2>
+            <div className="card card-body p-5 sm:p-8 shadow-sm space-y-4">
+              <h2 className="font-display text-lg sm:text-xl font-black text-fg mb-3 sm:mb-4">Frequently Asked Questions</h2>
               <div className="space-y-2.5 sm:space-y-3">
                 {FAQS.map((f) => (
                   <details key={f.q} className="group rounded-2xl border border-line bg-surface-2 p-3.5 sm:p-4 open:border-gold-400">
@@ -503,7 +503,7 @@ export default function CourseDetail() {
 
           {/* Sticky Checkout Sidebar */}
           <aside className="lg:sticky lg:top-24 space-y-6">
-            <div className="card card-body p-5 sm:p-6 shadow-pop space-y-5 sm:space-y-6">
+            <div className="card card-body p-5 sm:p-6 shadow-sm space-y-5 sm:space-y-6">
               <div>
                 <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-fg-3 font-bold">Tuition Investment</span>
                 <p className="font-display text-3xl sm:text-4xl font-black text-fg mt-1">{priceText}</p>
@@ -524,12 +524,12 @@ export default function CourseDetail() {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <FileText className="w-4 h-4 text-gold-600 dark:text-gold-400 shrink-0" />
-                  <span>Includes syllabus & training playbook</span>
+                  <span>Includes syllabus &amp; training playbook</span>
                 </div>
               </div>
 
               <div className="pt-2 text-center">
-                <Link to="/contact" className="text-xs font-semibold text-pitch-700 dark:text-pitch-300 hover:underline">
+                <Link to="/contact" className="text-xs font-semibold text-gold-600 dark:text-gold-400 hover:underline">
                   Have questions? Contact our coaches
                 </Link>
               </div>
@@ -545,7 +545,7 @@ export default function CourseDetail() {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[11px] uppercase font-bold text-gold-600 dark:text-gold-400 tracking-wider">Expand Your Skills</span>
-                <h2 className="text-lg sm:text-2xl font-black text-fg">Other Academy Masterclasses</h2>
+                <h2 className="font-display text-lg sm:text-2xl font-black text-fg">Other Academy Masterclasses</h2>
               </div>
               <Link to="/courses" className="text-xs font-bold text-fg hover:text-gold-600 dark:hover:text-gold-400 flex items-center gap-1">
                 View All <ArrowRight className="w-3.5 h-3.5" />

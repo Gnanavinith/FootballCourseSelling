@@ -8,11 +8,11 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponen
 
 const NAV = [
   { to: '/', label: 'Home' },
-  { to: '/courses', label: 'All Courses' },
+  { to: '/courses', label: 'All courses' },
   { to: '/about', label: 'About Coach Prasanth' },
-  { to: '/contact', label: 'Contact Support' },
-  { to: '/login', label: 'Player Login' },
-  { to: '/register', label: 'Create Account' },
+  { to: '/contact', label: 'Contact support' },
+  { to: '/login', label: 'Player login' },
+  { to: '/register', label: 'Create account' },
 ]
 
 const COURSES = [
@@ -28,22 +28,27 @@ const LEGAL = [
   { href: '#', label: 'Refund Policy' },
 ]
 
+const linkClass =
+  'text-sm text-fg-2 no-underline transition-colors duration-200 hover:text-fg hover:no-underline'
+
+const headingClass = 'mb-4 font-display text-sm font-bold text-fg'
+
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-surface text-fg border-t border-line transition-colors duration-300">
-      <div className="container-page py-14 sm:py-18 relative z-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <Link to="/" className="inline-flex items-center gap-3 no-underline hover:no-underline group">
-              <LogoMark className="h-10 w-9 transition-transform duration-300 group-hover:scale-105" />
+    <footer className="border-t border-line bg-surface text-fg">
+      <div className="container-page py-12 lg:py-16">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-x-8">
+          {/* Brand */}
+          <div className="col-span-2 lg:col-span-4">
+            <Link to="/" className="inline-flex items-center gap-3 no-underline hover:no-underline">
+              <LogoMark className="h-10 w-9" />
               <span className="flex flex-col leading-none">
-                <span className="font-display font-black text-2xl uppercase tracking-wider text-fg">
+                <span className="font-display text-2xl font-black uppercase tracking-wider text-fg">
                   Vanakkam
                 </span>
                 <span className="mt-1 flex items-center gap-2">
                   <span className="h-[2px] w-4 rounded bg-gold-400" />
-                  <span className="font-display font-extrabold text-[0.68rem] uppercase tracking-[0.45em] text-gold-600 dark:text-gold-400">
+                  <span className="font-display text-[0.68rem] font-extrabold uppercase tracking-[0.45em] text-gold-600 dark:text-gold-400">
                     Soccer
                   </span>
                 </span>
@@ -51,110 +56,92 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-2">
-              Grassroots to glory football training engineered for passionate players across Tamil Nadu and India. Structured weekly video drills taught in Tamil and English.
+              Football training for passionate players across Tamil Nadu and India.
+              Structured weekly video drills taught in Tamil and English.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="https://youtube.com/@vanakkamsoccer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-sm btn-outline inline-flex items-center gap-2 text-xs font-semibold"
+                className="btn btn-sm btn-outline"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4 fill-red-500" aria-hidden="true">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                 </svg>
-                <span>YouTube</span>
+                YouTube
               </a>
-
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
-                rel="noreferrer"
-                className="btn btn-sm btn-primary inline-flex items-center gap-2 text-xs font-bold shadow-glow"
+                rel="noopener noreferrer"
+                className="btn btn-sm btn-primary"
               >
                 <FaWhatsapp className="h-4 w-4" />
-                <span>WhatsApp</span>
+                WhatsApp
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <nav aria-label="Footer Navigation" className="md:col-span-3">
-            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
-              Explore
-            </h4>
-            <ul className="space-y-2.5">
+          {/* Explore */}
+          <nav aria-label="Footer navigation" className="col-span-1 lg:col-span-2">
+            <h4 className={headingClass}>Explore</h4>
+            <ul className="space-y-3">
               {NAV.map((l) => (
                 <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-fg"
-                  >
-                    {l.label}
-                  </Link>
+                  <Link to={l.to} className={linkClass}>{l.label}</Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           {/* Programs */}
-          <div className="md:col-span-3">
-            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
-              Featured Programs
-            </h4>
-            <ul className="space-y-2.5">
-              {COURSES.map((c, i) => (
-                <li key={i}>
-                  <Link
-                    to={c.to}
-                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-gold-600 dark:hover:text-gold-400"
-                  >
-                    {c.label}
-                  </Link>
+          <div className="col-span-1 lg:col-span-3">
+            <h4 className={headingClass}>Featured programs</h4>
+            <ul className="space-y-3">
+              {COURSES.map((c) => (
+                <li key={c.label}>
+                  <Link to={c.to} className={linkClass}>{c.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Trust / Grassroots Location */}
-          <div className="md:col-span-2">
-            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
-              Academy Base
-            </h4>
-            <div className="space-y-3 text-xs text-fg-2">
-              <p className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-pitch-600 dark:text-pitch-400 mt-0.5" />
+          {/* Contact */}
+          <div className="col-span-2 lg:col-span-3">
+            <h4 className={headingClass}>Contact</h4>
+            <ul className="space-y-3 text-sm text-fg-2">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" aria-hidden="true" />
                 <span>Tamil Nadu, India</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" />
-                <span>coach@vanakkamsoccer.com</span>
-              </p>
-              <div className="rounded-xl border border-line bg-page p-2.5 text-[11px] text-fg-3 shadow-sm flex items-center gap-2 mt-3">
-                <ShieldCheck className="h-4 w-4 text-pitch-600 dark:text-pitch-400 shrink-0" />
-                <span>Official Razorpay Verified Merchant</span>
-              </div>
-            </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" aria-hidden="true" />
+                <a href="mailto:coach@vanakkamsoccer.com" className={linkClass}>
+                  coach@vanakkamsoccer.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" aria-hidden="true" />
+                <span>Razorpay verified merchant</span>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-center sm:flex-row sm:text-left text-xs text-fg-3">
-          <p>
-            © {new Date().getFullYear()} Vanakkam Soccer Academy. Dedicated to grassroots football development.
-          </p>
-          <div className="flex items-center gap-6">
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 text-xs text-fg-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Vanakkam Soccer Academy. All rights reserved.</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {LEGAL.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="hover:text-fg transition-colors"
-              >
-                {item.label}
-              </a>
+              <li key={item.label}>
+                <a href={item.href} className="no-underline transition-colors hover:text-fg hover:no-underline">
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </footer>

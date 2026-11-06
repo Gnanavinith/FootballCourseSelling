@@ -46,7 +46,7 @@ function WeekBars({ total, current, finished }) {
           <span
             key={n}
             title={`Week ${n}`}
-            className={`h-1.5 flex-1 rounded-full transition-colors ${isNow ? 'animate-pulse bg-gold-400' : past ? 'bg-pitch-500' : 'bg-surface-2'}`}
+            className={`h-1.5 flex-1 rounded-full transition-colors ${isNow ? 'animate-pulse bg-gold-400' : past ? 'bg-emerald-500' : 'bg-line'}`}
           />
         )
       })}
@@ -136,13 +136,13 @@ function CourseCard({ enrollment, now }) {
 
   return (
     <>
-      <div className="card card-hover overflow-hidden flex flex-col">
+      <div className="card overflow-hidden flex flex-col rounded-2xl border border-line bg-surface shadow-sm hover:border-gold-400/50 transition">
         <div className="relative aspect-video w-full bg-surface-2 overflow-hidden">
           {course.thumbnail ? (
             <img src={course.thumbnail} alt={course.thumbAlt || course.title} className="h-full w-full object-cover" />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink-900 to-ink-800">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 text-gold-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true">
+            <div className="flex h-full w-full items-center justify-center bg-surface-2 text-gold-400">
+              <svg viewBox="0 0 24 24" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10" />
                 <polygon points="12,7.4 16.4,10.6 14.7,15.8 9.3,15.8 7.6,10.6" fill="currentColor" />
               </svg>
@@ -151,16 +151,16 @@ function CourseCard({ enrollment, now }) {
           <div className="absolute right-2 top-2 flex gap-1.5">
             {p.finished && <span className="badge badge-gold">Completed</span>}
             {!p.finished && <span className="badge badge-green">Active</span>}
-            {course.level && <span className="badge badge-dark">{course.level}</span>}
+            {course.level && <span className="badge badge-gray">{course.level}</span>}
           </div>
         </div>
 
-        <div className="card-body flex flex-1 flex-col">
-          <h3 className="line-clamp-2 text-base font-bold text-fg" lang={course.language === 'Tamil' ? 'ta' : undefined}>
+        <div className="card-body p-5 flex flex-1 flex-col">
+          <h3 className="font-display line-clamp-2 text-base font-bold text-fg" lang={course.language === 'Tamil' ? 'ta' : undefined}>
             {course.title}
           </h3>
           {course.shortDesc && (
-            <p className="mt-1 line-clamp-2 text-sm text-fg-3">{course.shortDesc}</p>
+            <p className="mt-1 line-clamp-2 text-xs text-fg-3 leading-relaxed">{course.shortDesc}</p>
           )}
 
           <div className="mt-4">
@@ -283,27 +283,29 @@ export default function MyCourses() {
   ]
 
   return (
-    <main>
-      <section className="section-dark hero-bg">
-        <div className="container-page pb-20 pt-8 md:pb-28 md:pt-14">
-          <div className="flex items-center justify-between gap-3 mb-4 animate-fade-up">
-            <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-sm text-fg-3 hover:text-white no-underline hover:no-underline">
+    <main className="min-h-screen bg-page text-fg-body font-sans">
+      <section className="relative overflow-hidden bg-surface py-10 sm:py-14 border-b border-line">
+        <div className="container-page">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <Link to="/dashboard" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-fg-3 hover:text-fg no-underline">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
               Dashboard
             </Link>
             <ThemeToggle compact />
           </div>
-          <p className="text-small animate-fade-up font-semibold uppercase tracking-widest text-gold-400">Student portal</p>
-          <h1 className="mt-2 animate-fade-up" style={{ animationDelay: '80ms' }}>
-            My <span className="text-gradient">Courses</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/25 bg-gold-400/10 px-3 py-1 text-xs font-bold text-gold-600 dark:text-gold-400 uppercase tracking-wider mb-3">
+            <span>Student Portal</span>
+          </div>
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-fg">
+            My <span className="text-gold-600 dark:text-gold-400">Masterclasses</span>
           </h1>
-          <p className="text-lead mt-3 animate-fade-up" style={{ animationDelay: '160ms' }}>
-            All your enrolled courses, progress, and resources in one place.
+          <p className="mt-3 max-w-2xl text-sm sm:text-base text-fg-3 leading-relaxed">
+            All your enrolled training tracks, progression drip, and certified playbook resources in one place.
           </p>
         </div>
       </section>
 
-      <div className="container-page relative z-10 -mt-12 pb-16 md:-mt-16">
+      <div className="container-page py-8 sm:py-12">
         {!loading && !error && enrollments.length > 0 && (
           <Reveal className="mb-6 flex flex-wrap gap-2">
             {FILTERS.map((f) => (
@@ -312,13 +314,13 @@ export default function MyCourses() {
                 type="button"
                 aria-pressed={filter === f.key}
                 onClick={() => setFilter(f.key)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`rounded-full border px-4 py-2 text-xs sm:text-sm font-semibold transition cursor-pointer ${
                   filter === f.key
-                    ? 'border-fg bg-fg text-page'
-                    : 'border-line-strong bg-surface text-fg-body hover:border-line'
+                    ? 'border-gold-500 bg-gold-400 text-black font-bold'
+                    : 'border-line bg-surface text-fg-body hover:border-gold-400/50'
                 }`}
               >
-                {f.label} <span className={filter === f.key ? 'text-gold-400' : 'text-fg-3'}>{f.count}</span>
+                {f.label} <span className={filter === f.key ? 'text-black/80' : 'text-fg-3'}>{f.count}</span>
               </button>
             ))}
           </Reveal>
@@ -331,31 +333,31 @@ export default function MyCourses() {
         )}
 
         {!loading && error && (
-          <div className="card card-body mx-auto max-w-lg text-center" role="alert">
+          <div className="card card-body mx-auto max-w-lg text-center p-8 rounded-2xl border border-line bg-surface shadow-sm" role="alert">
             <p className="font-display text-lg font-bold text-fg">Could not load your courses</p>
-            <p className="form-error">{error}</p>
-            <button type="button" className="btn btn-md btn-dark mx-auto mt-4" onClick={() => setAttempt((n) => n + 1)}>
+            <p className="text-sm text-danger-500 mt-2">{error}</p>
+            <button type="button" className="btn btn-md btn-primary mx-auto mt-4" onClick={() => setAttempt((n) => n + 1)}>
               Try again
             </button>
           </div>
         )}
 
         {!loading && !error && enrollments.length === 0 && (
-          <div className="card card-body mx-auto max-w-lg text-center">
+          <div className="card card-body mx-auto max-w-lg text-center p-10 sm:p-14 rounded-2xl border border-line bg-surface shadow-sm">
             <svg viewBox="0 0 24 24" className="mx-auto h-14 w-14 text-fg-3" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true">
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
             </svg>
-            <h2 className="mt-3 text-2xl">No courses yet</h2>
-            <p className="mt-2 text-fg-3">Choose a course and Week 1 unlocks straight after payment.</p>
-            <Link to="/courses" className="btn btn-lg btn-primary btn-block-mobile mx-auto mt-5">Explore Courses</Link>
+            <h2 className="font-display mt-3 text-2xl font-black text-fg">No courses yet</h2>
+            <p className="mt-2 text-sm text-fg-3">Choose a course and Week 1 unlocks straight after payment.</p>
+            <Link to="/courses" className="btn btn-lg btn-primary btn-block-mobile mx-auto mt-6">Explore Courses</Link>
           </div>
         )}
 
         {!loading && !error && filtered.length === 0 && enrollments.length > 0 && (
-          <div className="card card-body mx-auto max-w-lg text-center">
-            <h2 className="text-xl">No {filter} courses</h2>
-            <button type="button" className="btn btn-sm btn-ghost mt-3" onClick={() => setFilter('all')}>View all courses</button>
+          <div className="card card-body mx-auto max-w-lg text-center p-8 rounded-2xl border border-line bg-surface shadow-sm">
+            <h2 className="font-display text-xl font-bold text-fg">No {filter} courses</h2>
+            <button type="button" className="btn btn-sm btn-outline mt-3" onClick={() => setFilter('all')}>View all courses</button>
           </div>
         )}
 

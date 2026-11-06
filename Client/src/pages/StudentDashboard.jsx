@@ -80,7 +80,7 @@ const QUICK = [
 
 /* ───────────────────────── small components ───────────────────────── */
 
-const card = 'bg-surface dark:bg-zinc-900 border border-line dark:border-zinc-800 rounded-2xl shadow-card'
+const card = 'bg-surface border border-line rounded-2xl shadow-sm'
 
 function Ring({ percent, size = 76, stroke = 7 }) {
   const r = (size - stroke) / 2
@@ -89,12 +89,12 @@ function Ring({ percent, size = 76, stroke = 7 }) {
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90" role="img" aria-label={`${percent}% complete`}>
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke}
-          className="stroke-line dark:stroke-zinc-800" />
+          className="stroke-line" />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} strokeLinecap="round"
           strokeDasharray={c} strokeDashoffset={c - (c * percent) / 100}
-          className="stroke-gold-400 transition-all duration-700" />
+          className="stroke-gold-500 dark:stroke-gold-400 transition-all duration-700" />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center font-display text-sm font-black text-fg dark:text-white">
+      <span className="absolute inset-0 flex items-center justify-center font-display text-sm font-black text-fg">
         {percent}%
       </span>
     </div>
@@ -113,7 +113,7 @@ function WeekBars({ total, current, finished }) {
             key={n}
             title={`Module ${n}`}
             className={`h-1.5 flex-1 rounded-full ${
-              isNow ? 'bg-gold-400' : past ? 'bg-emerald-500' : 'bg-line dark:bg-zinc-800'
+              isNow ? 'bg-gold-500 dark:bg-gold-400' : past ? 'bg-emerald-500' : 'bg-line'
             }`}
           />
         )
@@ -130,11 +130,11 @@ function Countdown({ ms }) {
   return (
     <div className="flex items-center gap-2 tabular-nums" role="timer">
       {cells.map(([label, v]) => (
-        <div key={label} className="min-w-[3.25rem] rounded-xl border border-line bg-surface-2/70 px-2.5 py-1.5 text-center dark:border-zinc-800 dark:bg-zinc-950">
-          <span className="block font-display text-lg font-black leading-none text-fg dark:text-white">
+        <div key={label} className="min-w-[3.25rem] rounded-xl border border-line bg-surface-2/80 px-2.5 py-1.5 text-center">
+          <span className="block font-display text-lg font-black leading-none text-fg">
             {String(v).padStart(2, '0')}
           </span>
-          <span className="mt-1 block text-[10px] font-medium text-fg-3 dark:text-zinc-500">{label}</span>
+          <span className="mt-1 block text-[10px] font-medium text-fg-3">{label}</span>
         </div>
       ))}
     </div>
@@ -143,10 +143,10 @@ function Countdown({ ms }) {
 
 function Badge({ tone = 'neutral', children, icon }) {
   const tones = {
-    neutral: 'bg-surface-2 text-fg-2 border-line dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700',
+    neutral: 'bg-surface-2 text-fg-2 border-line',
     green: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
     amber: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-    gold: 'bg-gold-400 text-black border-gold-400',
+    gold: 'bg-gold-400 text-black border-gold-400 font-bold',
   }
   return (
     <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${tones[tone]}`}>
@@ -157,15 +157,15 @@ function Badge({ tone = 'neutral', children, icon }) {
 
 function Stat({ label, value, tone = '' }) {
   return (
-    <div className="px-4 first:pl-0 last:pr-0 [&:not(:first-child)]:border-l border-line dark:border-zinc-800">
-      <p className="text-[11px] font-medium text-fg-3 dark:text-zinc-400">{label}</p>
-      <p className={`font-display text-2xl font-black tabular-nums ${tone || 'text-fg dark:text-white'}`}>{value}</p>
+    <div className="px-4 first:pl-0 last:pr-0 [&:not(:first-child)]:border-l border-line">
+      <p className="text-[11px] font-medium text-fg-3">{label}</p>
+      <p className={`font-display text-2xl font-black tabular-nums ${tone || 'text-fg'}`}>{value}</p>
     </div>
   )
 }
 
 function Skeleton({ className = '' }) {
-  return <div className={`animate-pulse rounded-xl bg-surface-2 dark:bg-zinc-800/70 ${className}`} />
+  return <div className={`animate-pulse rounded-xl bg-surface-2 ${className}`} />
 }
 
 function DashboardSkeleton() {
@@ -298,17 +298,17 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-page text-fg font-sans flex flex-col selection:bg-gold-400 selection:text-black">
       {/* ───────── Header ───────── */}
-      <header className="border-b border-line dark:border-zinc-800 bg-surface dark:bg-zinc-950">
+      <header className="border-b border-line bg-surface">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 lg:flex-row lg:items-end lg:justify-between lg:py-10">
           <div>
-            <div className="mb-3 flex items-center gap-2 text-gold-600 dark:text-gold-400">
-              <Trophy className="h-4 w-4" />
-              <span className="text-sm font-semibold">Masterclass Academy</span>
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold-400/25 bg-gold-400/10 px-3 py-1 text-xs font-bold text-gold-600 dark:text-gold-400 uppercase tracking-wider">
+              <Trophy className="h-3.5 w-3.5" />
+              <span>Masterclass Academy</span>
             </div>
-            <h1 className="text-3xl font-black tracking-tight text-fg dark:text-white lg:text-4xl">
-              {greetingFor()}, {firstName}
+            <h1 className="font-display text-3xl font-black tracking-tight text-fg lg:text-4xl">
+              {greetingFor()}, <span className="text-gold-600 dark:text-gold-400">{firstName}</span>
             </h1>
-            <p className="mt-2 max-w-xl text-sm text-fg-3 dark:text-zinc-400">
+            <p className="mt-2 max-w-xl text-sm text-fg-3 leading-relaxed">
               {loading
                 ? 'Loading your training…'
                 : active.length > 0
@@ -318,7 +318,7 @@ export default function Dashboard() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center rounded-2xl border border-line bg-surface-2/60 px-5 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="flex items-center rounded-2xl border border-line bg-surface-2/60 px-5 py-3">
               <Stat label="Enrolled" value={loading ? '–' : enrollments.length} />
               <Stat label="Active" value={loading ? '–' : active.length} tone="text-gold-600 dark:text-gold-400" />
               <Stat label="Completed" value={loading ? '–' : completedCount} tone="text-emerald-600 dark:text-emerald-400" />
@@ -333,8 +333,8 @@ export default function Dashboard() {
 
         {!loading && error && (
           <div className={`${card} mx-auto max-w-lg p-10 text-center`} role="alert">
-            <h2 className="mb-2 text-lg font-bold text-fg dark:text-white">We couldn’t load your academy</h2>
-            <p className="mb-6 text-sm text-red-500 dark:text-red-400">{error}</p>
+            <h2 className="mb-2 font-display text-lg font-bold text-fg">We couldn’t load your academy</h2>
+            <p className="mb-6 text-sm text-danger-500">{error}</p>
             <button type="button" className="btn btn-md btn-primary mx-auto" onClick={() => setAttempt((n) => n + 1)}>
               <RotateCcw className="h-4 w-4" /> Try again
             </button>
@@ -346,8 +346,8 @@ export default function Dashboard() {
             <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-400/10 text-gold-500 dark:text-gold-400">
               <BookOpen className="h-7 w-7" />
             </div>
-            <h2 className="mb-2 text-2xl font-bold text-fg dark:text-white">No masterclasses yet</h2>
-            <p className="mb-8 text-sm text-fg-3 dark:text-zinc-400">
+            <h2 className="mb-2 font-display text-2xl font-bold text-fg">No masterclasses yet</h2>
+            <p className="mb-8 text-sm text-fg-3">
               Choose a professional training track and your modules will appear here.
             </p>
             <Link to="/courses" className="btn btn-lg btn-primary mx-auto">Explore masterclasses</Link>
@@ -369,16 +369,16 @@ export default function Dashboard() {
                       onClick={() => setSelectedCourseId(e.course._id)}
                       className={`flex min-w-[13rem] cursor-pointer flex-col gap-2 rounded-xl border px-4 py-3 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 ${
                         sel
-                          ? 'border-gold-400 bg-gold-400/10 dark:bg-gold-400/5'
-                          : 'border-line bg-surface hover:border-line-strong dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700'
+                          ? 'border-gold-400 bg-gold-400/10'
+                          : 'border-line bg-surface hover:border-line-strong'
                       }`}
                     >
-                      <span className="truncate text-xs font-bold text-fg dark:text-white">{e.course.title}</span>
+                      <span className="truncate text-xs font-bold text-fg">{e.course.title}</span>
                       <span className="flex items-center gap-2">
-                        <span className="h-1 flex-1 overflow-hidden rounded-full bg-line dark:bg-zinc-800">
+                        <span className="h-1 flex-1 overflow-hidden rounded-full bg-line">
                           <span className="block h-full rounded-full bg-gold-400" style={{ width: `${p.percent}%` }} />
                         </span>
-                        <span className="text-[11px] font-semibold tabular-nums text-fg-3 dark:text-zinc-400">{p.percent}%</span>
+                        <span className="text-[11px] font-semibold tabular-nums text-fg-3">{p.percent}%</span>
                       </span>
                     </button>
                   )
@@ -388,14 +388,14 @@ export default function Dashboard() {
 
             {/* ───────── Featured course ───────── */}
             <section className={`${card} grid overflow-hidden lg:grid-cols-[22rem_1fr]`}>
-              <div className="relative flex h-56 items-center justify-center overflow-hidden bg-slate-900 dark:bg-black lg:h-auto">
+              <div className="relative flex h-56 items-center justify-center overflow-hidden bg-surface-2 lg:h-auto">
                 {course.thumbnail ? (
                   <img
                     src={course.thumbnail}
                     alt={course.title}
                     loading="lazy"
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
-                    className="h-full w-full object-cover opacity-90"
+                    className="h-full w-full object-cover"
                   />
                 ) : (
                   <BookOpen className="h-14 w-14 text-gold-400" />
@@ -425,12 +425,12 @@ export default function Dashboard() {
                       </Badge>
                     </div>
                     <h2
-                      className="text-2xl font-black tracking-tight text-fg dark:text-white lg:text-3xl"
+                      className="font-display text-2xl font-black tracking-tight text-fg lg:text-3xl"
                       lang={course.language === 'Tamil' ? 'ta' : undefined}
                     >
                       {course.title}
                     </h2>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-fg-3 dark:text-zinc-400">
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-fg-3">
                       {course.subtitle || course.description || 'Professional soccer masterclass taught by top coaches.'}
                     </p>
                   </div>
@@ -438,27 +438,27 @@ export default function Dashboard() {
                 </div>
 
                 <div>
-                  <div className="mb-2 flex items-center justify-between text-xs font-medium text-fg-2 dark:text-zinc-300">
+                  <div className="mb-2 flex items-center justify-between text-xs font-medium text-fg-2">
                     <span>
                       {currentProgress.finished
                         ? `All ${currentProgress.total} modules complete`
                         : `Module ${currentProgress.current} of ${currentProgress.total}${currentProgress.lessonTitle ? ` · ${currentProgress.lessonTitle}` : ''}`}
                     </span>
-                    <span className="text-fg-3 dark:text-zinc-400">
+                    <span className="text-fg-3">
                       {currentProgress.completedWeeks}/{currentProgress.total} done
                     </span>
                   </div>
                   <WeekBars total={currentProgress.total} current={currentProgress.current} finished={currentProgress.finished} />
                 </div>
 
-                <div className="mt-auto flex flex-col gap-4 border-t border-line pt-5 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-auto flex flex-col gap-4 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
                   {currentProgress.finished ? (
-                    <p className="text-sm text-fg-3 dark:text-zinc-400">
+                    <p className="text-sm text-fg-3">
                       Finished on {fmtDate(currentProgress.end)}. Your access stays open for review.
                     </p>
                   ) : (
                     <div>
-                      <p className="mb-1.5 text-xs font-medium text-fg-3 dark:text-zinc-400">{currentProgress.eventLabel}</p>
+                      <p className="mb-1.5 text-xs font-medium text-fg-3">{currentProgress.eventLabel}</p>
                       <Countdown ms={currentProgress.eventAt - now} />
                     </div>
                   )}
@@ -467,7 +467,7 @@ export default function Dashboard() {
                       <button
                         type="button"
                         onClick={() => setSyllabusOpen(true)}
-                        className="btn btn-lg inline-flex items-center gap-2 border border-line text-sm font-semibold dark:border-zinc-700 hover:bg-surface-2 transition cursor-pointer"
+                        className="btn btn-lg inline-flex items-center gap-2 border border-line text-sm font-semibold hover:bg-surface-2 transition cursor-pointer text-fg"
                       >
                         <FileText className="h-4 w-4 text-gold-500" /> Syllabus
                       </button>
@@ -485,7 +485,7 @@ export default function Dashboard() {
             <div className="grid gap-6 lg:grid-cols-3">
               <section className={`${card} lg:col-span-2`}>
                 {/* Tabs */}
-                <div className="flex items-center justify-between gap-4 border-b border-line px-6 dark:border-zinc-800">
+                <div className="flex items-center justify-between gap-4 border-b border-line px-6">
                   <div className="flex gap-6" role="tablist">
                     {tabs.map((t) => (
                       <button
@@ -495,8 +495,8 @@ export default function Dashboard() {
                         onClick={() => setTab(t.id)}
                         className={`-mb-px cursor-pointer border-b-2 py-4 text-sm font-semibold transition focus:outline-none focus-visible:text-gold-500 ${
                           tab === t.id
-                            ? 'border-gold-400 text-fg dark:text-white'
-                            : 'border-transparent text-fg-3 hover:text-fg dark:text-zinc-400 dark:hover:text-white'
+                            ? 'border-gold-500 text-fg'
+                            : 'border-transparent text-fg-3 hover:text-fg'
                         }`}
                       >
                         {t.label}
@@ -504,7 +504,7 @@ export default function Dashboard() {
                     ))}
                   </div>
                   {tab === 'curriculum' && (
-                    <span className="hidden text-xs text-fg-3 dark:text-zinc-400 sm:block">
+                    <span className="hidden text-xs text-fg-3 sm:block">
                       {courseWeeks.length} modules · {totals.videos} videos · {fmtTotal(totals.seconds)}
                     </span>
                   )}
@@ -517,17 +517,17 @@ export default function Dashboard() {
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                         <label className="relative flex-1">
                           <span className="sr-only">Search modules and videos</span>
-                          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-fg-3 dark:text-zinc-500" />
+                          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-fg-3" />
                           <input
                             type="search"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Search modules or videos"
-                            className="w-full rounded-xl border border-line bg-surface-2/60 py-2.5 pl-9 pr-3 text-sm text-fg placeholder:text-fg-3 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/30 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
+                            className="w-full rounded-xl border border-line bg-surface-2/60 py-2.5 pl-9 pr-3 text-sm text-fg placeholder:text-fg-3 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/30"
                           />
                         </label>
                         <div className="flex items-center gap-2">
-                          <div className="flex rounded-xl border border-line p-0.5 dark:border-zinc-800" role="group" aria-label="Filter modules">
+                          <div className="flex rounded-xl border border-line p-0.5 bg-surface-2/40" role="group" aria-label="Filter modules">
                             {[['all', 'All'], ['unlocked', 'Unlocked'], ['locked', 'Locked']].map(([id, label]) => (
                               <button
                                 key={id}
@@ -535,8 +535,8 @@ export default function Dashboard() {
                                 aria-pressed={filter === id}
                                 className={`cursor-pointer rounded-[10px] px-3 py-1.5 text-xs font-semibold transition ${
                                   filter === id
-                                    ? 'bg-gold-400 text-black'
-                                    : 'text-fg-3 hover:text-fg dark:text-zinc-400 dark:hover:text-white'
+                                    ? 'bg-gold-400 text-black font-bold'
+                                    : 'text-fg-3 hover:text-fg'
                                 }`}
                               >
                                 {label}
@@ -547,7 +547,7 @@ export default function Dashboard() {
                             onClick={toggleAll}
                             title={allOpen ? 'Collapse all' : 'Expand all'}
                             aria-label={allOpen ? 'Collapse all modules' : 'Expand all modules'}
-                            className="cursor-pointer rounded-xl border border-line p-2.5 text-fg-3 transition hover:text-fg dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-white"
+                            className="cursor-pointer rounded-xl border border-line p-2.5 text-fg-3 transition hover:text-fg hover:bg-surface-2"
                           >
                             <ChevronsUpDown className="h-4 w-4" />
                           </button>
@@ -557,11 +557,11 @@ export default function Dashboard() {
                       {loadingWeeks ? (
                         <div className="space-y-3">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-20" />)}</div>
                       ) : courseWeeks.length === 0 ? (
-                        <p className="py-12 text-center text-sm text-fg-3 dark:text-zinc-400">
+                        <p className="py-12 text-center text-sm text-fg-3">
                           Modules for this masterclass haven’t been published yet.
                         </p>
                       ) : visibleWeeks.length === 0 ? (
-                        <p className="py-12 text-center text-sm text-fg-3 dark:text-zinc-400">
+                        <p className="py-12 text-center text-sm text-fg-3">
                           No modules match your search.{' '}
                           <button className="font-semibold text-gold-600 underline dark:text-gold-400" onClick={() => { setQuery(''); setFilter('all') }}>
                             Clear filters
@@ -584,8 +584,8 @@ export default function Dashboard() {
                                   isCurrent
                                     ? 'border-gold-400/60 bg-gold-400/5'
                                     : unlocked
-                                    ? 'border-line bg-surface dark:border-zinc-800 dark:bg-zinc-900'
-                                    : 'border-line/70 bg-surface-2/40 dark:border-zinc-800 dark:bg-zinc-950/40'
+                                    ? 'border-line bg-surface'
+                                    : 'border-line/70 bg-surface-2/40'
                                 }`}
                               >
                                 <button
@@ -601,18 +601,18 @@ export default function Dashboard() {
                                         : isDone
                                         ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
                                         : unlocked
-                                        ? 'bg-surface-2 text-fg dark:bg-zinc-800 dark:text-white'
-                                        : 'bg-surface-2/60 text-fg-3 dark:bg-zinc-900 dark:text-zinc-600'
+                                        ? 'bg-surface-2 text-fg'
+                                        : 'bg-surface-2/60 text-fg-3'
                                     }`}
                                   >
                                     {isDone ? <CheckCircle2 className="h-5 w-5" /> : !unlocked ? <Lock className="h-4 w-4" /> : `W${week.weekNumber}`}
                                   </span>
 
                                   <span className="min-w-0 flex-1">
-                                    <span className={`block truncate text-sm font-bold ${unlocked ? 'text-fg dark:text-white' : 'text-fg-3 dark:text-zinc-500'}`}>
+                                    <span className={`block truncate text-sm font-bold ${unlocked ? 'text-fg' : 'text-fg-3'}`}>
                                       {week.title || `Training module ${week.weekNumber}`}
                                     </span>
-                                    <span className="mt-0.5 flex items-center gap-3 text-xs text-fg-3 dark:text-zinc-400">
+                                    <span className="mt-0.5 flex items-center gap-3 text-xs text-fg-3">
                                       <span className="inline-flex items-center gap-1"><Play className="h-3 w-3" />{videos.length} {videos.length === 1 ? 'video' : 'videos'}</span>
                                       {secs > 0 && <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" />{fmtTotal(secs)}</span>}
                                       {!unlocked && <span className="inline-flex items-center gap-1"><CalendarDays className="h-3 w-3" />Opens {fmtDate(unlockAt)}</span>}
@@ -626,30 +626,30 @@ export default function Dashboard() {
                                       : <Badge>Locked</Badge>}
                                   </span>
                                   {unlocked && (
-                                    <ChevronDown className={`h-4 w-4 shrink-0 text-fg-3 transition-transform dark:text-zinc-400 ${isOpen ? 'rotate-180' : ''}`} />
+                                    <ChevronDown className={`h-4 w-4 shrink-0 text-fg-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                                   )}
                                 </button>
 
                                 {isOpen && unlocked && (
-                                  <div className="border-t border-line px-4 pb-4 pt-3 dark:border-zinc-800">
+                                  <div className="border-t border-line px-4 pb-4 pt-3">
                                     {week.description && (
-                                      <p className="mb-3 text-xs leading-relaxed text-fg-2 dark:text-zinc-300">{week.description}</p>
+                                      <p className="mb-3 text-xs leading-relaxed text-fg-2">{week.description}</p>
                                     )}
                                     {videos.length === 0 ? (
-                                      <p className="text-xs text-fg-3 dark:text-zinc-500">No videos in this module yet.</p>
+                                      <p className="text-xs text-fg-3">No videos in this module yet.</p>
                                     ) : (
-                                      <ul className="divide-y divide-line dark:divide-zinc-800">
+                                      <ul className="divide-y divide-line">
                                         {videos.map((vid, i) => (
                                           <li key={vid._id || i}>
                                             <Link
                                               to={`/watch/${course._id}`}
-                                              className="group flex items-center gap-3 rounded-lg px-2 py-2.5 text-xs font-medium text-fg-body transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 dark:text-zinc-200 dark:hover:bg-zinc-800/60"
+                                              className="group flex items-center gap-3 rounded-lg px-2 py-2.5 text-xs font-medium text-fg-body transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                                             >
                                               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold-400/10 text-gold-500 transition group-hover:bg-gold-400 group-hover:text-black dark:text-gold-400">
                                                 <Play className="h-3 w-3 fill-current" />
                                               </span>
                                               <span className="flex-1 truncate">{vid.title}</span>
-                                              <span className="tabular-nums text-[11px] text-fg-3 dark:text-zinc-400">{fmtDuration(vid.durationSeconds)}</span>
+                                              <span className="tabular-nums text-[11px] text-fg-3">{fmtDuration(vid.durationSeconds)}</span>
                                             </Link>
                                           </li>
                                         ))}
@@ -670,19 +670,19 @@ export default function Dashboard() {
                     <ul className="space-y-3">
                       {hasSyllabus && (
                         <li>
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-line bg-surface hover:border-gold-400/50 transition shadow-xs dark:bg-zinc-900/60 dark:border-zinc-800">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-line bg-surface hover:border-gold-400/50 transition shadow-xs">
                             <div className="flex items-center gap-3.5 min-w-0">
                               <div className="w-10 h-10 rounded-xl bg-gold-400 text-ink-950 flex items-center justify-center font-bold shadow-xs shrink-0">
                                 <FileText className="h-5 w-5" />
                               </div>
                               <div className="min-w-0">
                                 <div className="flex items-center gap-2">
-                                  <h4 className="text-sm font-bold text-fg dark:text-white truncate">Official Course Syllabus</h4>
+                                  <h4 className="text-sm font-bold text-fg truncate">Official Course Syllabus</h4>
                                   {course.syllabusUrl && (
                                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold-400/20 text-gold-600 dark:text-gold-400 border border-gold-400/30 shrink-0">PDF</span>
                                   )}
                                 </div>
-                                <p className="text-xs text-fg-3 dark:text-zinc-400 mt-0.5 truncate">
+                                <p className="text-xs text-fg-3 mt-0.5 truncate">
                                   {course.syllabusUrl ? 'Curriculum guide & printable training schedule.' : 'Training schedule & curriculum outline.'}
                                 </p>
                               </div>
@@ -700,7 +700,7 @@ export default function Dashboard() {
                                 <a
                                   href={`/api/courses/${course._id}/syllabus/file`}
                                   download={`${course.slug || 'course'}-syllabus.pdf`}
-                                  className="btn btn-sm border border-line dark:border-zinc-700 font-semibold inline-flex items-center gap-1.5"
+                                  className="btn btn-sm border border-line font-semibold inline-flex items-center gap-1.5 text-fg hover:bg-surface-2 transition"
                                 >
                                   <Download className="h-3.5 w-3.5" />
                                   <span className="hidden sm:inline">Download</span>
@@ -716,7 +716,7 @@ export default function Dashboard() {
                         </li>
                       ))}
                       {!hasSyllabus && !(course.documents && course.documents.length) && (
-                        <li className="p-8 text-center text-sm text-fg-3 dark:text-zinc-400 border border-dashed border-line dark:border-zinc-800 rounded-2xl">
+                        <li className="p-8 text-center text-sm text-fg-3 border border-dashed border-line rounded-2xl">
                           No downloadable resources available for this course yet.
                         </li>
                       )}
@@ -741,11 +741,11 @@ export default function Dashboard() {
               <aside className="space-y-6">
                 {upNext && (
                   <div className={`${card} p-5`}>
-                    <div className="mb-3 flex items-center gap-2 text-sm font-bold text-fg dark:text-white">
+                    <div className="mb-3 flex items-center gap-2 text-sm font-bold text-fg">
                       <Hourglass className="h-4 w-4 text-gold-500 dark:text-gold-400" /> Up next
                     </div>
-                    <p className="truncate text-sm font-semibold text-fg dark:text-white">{upNext.e.course.title}</p>
-                    <p className="mt-0.5 text-xs text-fg-3 dark:text-zinc-400">
+                    <p className="truncate text-sm font-semibold text-fg">{upNext.e.course.title}</p>
+                    <p className="mt-0.5 text-xs text-fg-3">
                       {upNext.p.isLastWeek ? 'Final module ends' : `Module ${upNext.p.current + 1} opens`} {fmtDate(upNext.p.eventAt)}
                     </p>
                     <div className="mt-3"><Countdown ms={upNext.p.eventAt - now} /></div>
@@ -753,22 +753,22 @@ export default function Dashboard() {
                 )}
 
                 <div className={`${card} p-5`}>
-                  <h3 className="mb-3 text-sm font-bold text-fg dark:text-white">Quick links</h3>
+                  <h3 className="mb-3 font-display text-sm font-bold text-fg">Quick links</h3>
                   <ul className="space-y-1.5">
                     {QUICK.map(({ to, title, text, Icon }) => (
                       <li key={to}>
                         <Link
                           to={to}
-                          className="group flex items-center gap-3 rounded-xl p-2.5 transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 dark:hover:bg-zinc-800/60"
+                          className="group flex items-center gap-3 rounded-xl p-2.5 transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                         >
                           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gold-400/10 text-gold-500 dark:text-gold-400">
                             <Icon className="h-4 w-4" />
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-xs font-bold text-fg dark:text-white">{title}</span>
-                            <span className="block truncate text-[11px] text-fg-3 dark:text-zinc-400">{text}</span>
+                            <span className="block text-xs font-bold text-fg">{title}</span>
+                            <span className="block truncate text-[11px] text-fg-3">{text}</span>
                           </span>
-                          <ArrowRight className="h-4 w-4 text-fg-3 transition group-hover:translate-x-0.5 group-hover:text-gold-500 dark:text-zinc-500" />
+                          <ArrowRight className="h-4 w-4 text-fg-3 transition group-hover:translate-x-0.5 group-hover:text-gold-500" />
                         </Link>
                       </li>
                     ))}
@@ -797,14 +797,14 @@ function ResourceLink({ href, icon, title, meta, action }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-3 rounded-xl border border-line bg-surface-2/50 p-3.5 transition hover:border-gold-400/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 dark:border-zinc-800 dark:bg-zinc-950"
+      className="group flex items-center gap-3 rounded-xl border border-line bg-surface-2/50 p-3.5 transition hover:border-gold-400/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gold-400/10 text-gold-500 dark:text-gold-400">{icon}</span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-sm font-semibold text-fg dark:text-white">{title}</span>
-        <span className="block text-[11px] text-fg-3 dark:text-zinc-400">{meta}</span>
+        <span className="block truncate text-sm font-semibold text-fg">{title}</span>
+        <span className="block text-[11px] text-fg-3">{meta}</span>
       </span>
-      <span className="text-fg-3 transition group-hover:text-gold-500 dark:text-zinc-400 dark:group-hover:text-gold-400">{action}</span>
+      <span className="text-fg-3 transition group-hover:text-gold-500">{action}</span>
     </a>
   )
 }
@@ -812,10 +812,10 @@ function ResourceLink({ href, icon, title, meta, action }) {
 function Detail({ icon, label, value }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-fg-3 dark:bg-zinc-800 dark:text-zinc-400">{icon}</span>
+      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-fg-3">{icon}</span>
       <div>
-        <dt className="text-xs text-fg-3 dark:text-zinc-400">{label}</dt>
-        <dd className="text-sm font-semibold text-fg dark:text-white">{value}</dd>
+        <dt className="text-xs text-fg-3">{label}</dt>
+        <dd className="text-sm font-semibold text-fg">{value}</dd>
       </div>
     </div>
   )
