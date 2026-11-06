@@ -26,7 +26,7 @@ function VideoPlayer() {
   );
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-line bg-ink-950 shadow-sm">
+    <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-ink-950 shadow-sm">
       {playing ? (
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&playsinline=1`}
@@ -129,18 +129,34 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* What you'll train: static, no animation */}
-      <div className="border-y border-line bg-surface">
-        <div className="container-page py-5">
-          <h2 className="sr-only">What you will train</h2>
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold text-fg-body sm:grid-cols-4">
-            {SKILLS.map((s) => (
-              <li key={s} className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden="true" />
-                {s}
-              </li>
-            ))}
-          </ul>
+      {/* What you'll train: scrolling strip (transform-only animation) */}
+      <div
+        className="relative overflow-hidden border-y border-line bg-surface py-4 motion-reduce:overflow-x-auto"
+        aria-label="What you will train"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-surface to-transparent motion-reduce:hidden"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-surface to-transparent motion-reduce:hidden"
+        />
+
+        <div className="flex w-max animate-marquee will-change-transform hover:[animation-play-state:paused] motion-reduce:animate-none">
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
+              {SKILLS.map((s) => (
+                <li
+                  key={s}
+                  className="flex items-center gap-2.5 whitespace-nowrap pl-8 text-sm font-semibold text-fg-body sm:pl-12"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden="true" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+          ))}
         </div>
       </div>
     </section>
