@@ -5,6 +5,8 @@
    ========================================================= */
 
 @import "tailwindcss";
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/inter";
 @import "@fontsource-variable/sora";
 @import "@fontsource-variable/archivo";
 @import "@fontsource-variable/plus-jakarta-sans";
@@ -59,11 +61,11 @@
   --color-tint-green:var(--c-tint-green); --color-on-tint-green:var(--c-on-tint-green);
   --color-tint-red:var(--c-tint-red);     --color-on-tint-red:var(--c-on-tint-red);
 
-  --font-display: "Sora Variable", "Archivo Variable", "Anek Tamil Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-sans: "Plus Jakarta Sans Variable", "Anek Tamil Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-logo: "Sora Variable", "Archivo Black", "Anton", sans-serif;
+  --font-display: "Outfit Variable", "Anek Tamil Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-sans: "Inter Variable", "Anek Tamil Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-logo: "Outfit Variable", "Archivo Black", sans-serif;
   --font-tamil: "Anek Tamil Variable", "Mukta Malar", sans-serif;
-  --font-price: "Sora Variable", "Plus Jakarta Sans Variable", sans-serif;
+  --font-price: "Outfit Variable", "Inter Variable", sans-serif;
 
   --radius-btn: 0.75rem;
   --radius-card: 1.25rem;
