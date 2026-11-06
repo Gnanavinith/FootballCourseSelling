@@ -28,52 +28,10 @@ const LEGAL = [
   { href: '#', label: 'Refund Policy' },
 ]
 
-const FOOTER_SKILLS = [
-  'Grassroots to Glory',
-  'Tamil & English Drills',
-  'Weekly 7-Day Habit Unlock',
-  '1v1 Ball Mastery',
-  'Tactical Vision & Game IQ',
-  'Train on Any Ground',
-  '79.9K+ YouTube Community',
-  'Coach Prasanth Mentorship',
-]
-
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-page text-fg border-t border-line transition-colors duration-300">
-      {/* Top Scrolling Values Ticker matching Hero */}
-      <div
-        className="relative overflow-hidden border-b border-line bg-surface py-3.5 motion-reduce:overflow-x-auto"
-        aria-label="Academy Core Values"
-      >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-surface to-transparent motion-reduce:hidden"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-surface to-transparent motion-reduce:hidden"
-        />
-
-        <div className="flex w-max animate-marquee will-change-transform hover:[animation-play-state:paused] motion-reduce:animate-none">
-          {[0, 1].map((copy) => (
-            <ul key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
-              {FOOTER_SKILLS.map((s) => (
-                <li
-                  key={s}
-                  className="flex items-center gap-2.5 whitespace-nowrap pl-8 text-xs font-bold uppercase tracking-wider text-fg-body sm:pl-12"
-                >
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden="true" />
-                  {s}
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
-
-      <div className="container-page py-12 sm:py-16 relative z-10">
+    <footer className="relative overflow-hidden bg-surface text-fg border-t border-line transition-colors duration-300">
+      <div className="container-page py-14 sm:py-18 relative z-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
           {/* Brand Column */}
           <div className="md:col-span-4">
@@ -123,15 +81,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <nav aria-label="Footer Navigation" className="md:col-span-3">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">
+            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
               Explore
-            </p>
-            <ul className="mt-4 space-y-2.5">
+            </h4>
+            <ul className="space-y-2.5">
               {NAV.map((l) => (
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-gold-600 dark:hover:text-gold-400"
+                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-fg"
                   >
                     {l.label}
                   </Link>
@@ -142,10 +100,10 @@ export default function Footer() {
 
           {/* Programs */}
           <div className="md:col-span-3">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">
+            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
               Featured Programs
-            </p>
-            <ul className="mt-4 space-y-2.5">
+            </h4>
+            <ul className="space-y-2.5">
               {COURSES.map((c, i) => (
                 <li key={i}>
                   <Link
@@ -161,10 +119,10 @@ export default function Footer() {
 
           {/* Trust / Grassroots Location */}
           <div className="md:col-span-2">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">
+            <h4 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400 mb-4">
               Academy Base
-            </p>
-            <div className="mt-4 space-y-3 text-xs text-fg-2">
+            </h4>
+            <div className="space-y-3 text-xs text-fg-2">
               <p className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 shrink-0 text-pitch-600 dark:text-pitch-400 mt-0.5" />
                 <span>Tamil Nadu, India</span>
@@ -173,7 +131,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" />
                 <span>coach@vanakkamsoccer.com</span>
               </p>
-              <div className="rounded-xl border border-line bg-surface p-2.5 text-[11px] text-fg-3 shadow-sm flex items-center gap-2 mt-3">
+              <div className="rounded-xl border border-line bg-page p-2.5 text-[11px] text-fg-3 shadow-sm flex items-center gap-2 mt-3">
                 <ShieldCheck className="h-4 w-4 text-pitch-600 dark:text-pitch-400 shrink-0" />
                 <span>Official Razorpay Verified Merchant</span>
               </div>
@@ -191,7 +149,7 @@ export default function Footer() {
               <a
                 key={item.label}
                 href={item.href}
-                className="hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
+                className="hover:text-fg transition-colors"
               >
                 {item.label}
               </a>
