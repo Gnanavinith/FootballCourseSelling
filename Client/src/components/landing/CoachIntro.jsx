@@ -19,7 +19,7 @@ const focusAreas = [
 
 export default function CoachIntro() {
   return (
-    <section className="relative overflow-hidden bg-white text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#06090e] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-surface text-fg py-14 sm:py-20 border-b border-line">
       {/* Stadium ambiance */}
       <div
         aria-hidden="true"
@@ -42,7 +42,7 @@ export default function CoachIntro() {
 
             {/* Video frame with subtle stadium border */}
             <div
-              className="video-frame overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-xl ring-1 ring-slate-200/50 dark:border-white/15 dark:bg-ink-900 dark:shadow-pop dark:ring-white/10"
+              className="video-frame overflow-hidden rounded-3xl border border-line bg-ink-950 shadow-sm"
               style={{ aspectRatio: '9 / 16' }}
             >
               <iframe
@@ -57,7 +57,7 @@ export default function CoachIntro() {
             </div>
 
             {/* Floating Credential Tag */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-gold-500/40 bg-white/95 px-4 py-1.5 text-xs font-bold text-gold-700 shadow-md backdrop-blur-md dark:border-gold-400/40 dark:bg-ink-950/90 dark:text-gold-300">
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-bold text-fg shadow-sm backdrop-blur-md">
               ⚽ Coach Prasanth • 79.9K+ Ballers Mentored
             </div>
           </div>
@@ -68,18 +68,18 @@ export default function CoachIntro() {
               Your Head Trainer
             </span>
 
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-              "Your Background Doesn't Define You.
-              <span className="text-gradient block font-black">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+              "Your Background Doesn't Define You.{" "}
+              <span className="text-gold-600 dark:text-gold-400 block sm:inline">
                 Your Training Does."
               </span>
             </h2>
 
-            <p className="mt-4 text-base sm:text-lg text-ink-700 dark:text-ink-200 leading-relaxed font-medium">
+            <p className="mt-4 text-base sm:text-lg text-fg-body leading-relaxed font-medium">
               Growing up, I saw talented players drop out of football simply because professional coaching was locked behind unaffordable academy fees or spoken in languages that felt disconnected.
             </p>
 
-            <p className="mt-3 text-sm text-ink-600 dark:text-ink-400 leading-relaxed">
+            <p className="mt-3 text-sm text-fg-2 leading-relaxed">
               I created Vanakkam Soccer to bring elite, modern European and Indian match techniques straight to your local ground, terrace, or school field—taught warmly in Tamil and English with zero fluff. If you bring the hunger, I will give you the roadmap to become unstoppable.
             </p>
 
@@ -88,17 +88,17 @@ export default function CoachIntro() {
               {focusAreas.map((item, i) => (
                 <div
                   key={item.title}
-                  className="group rounded-2xl border border-slate-200/90 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:border-gold-400/50 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:hover:border-gold-400/40 dark:hover:shadow-card"
+                  className="group rounded-2xl border border-line bg-page p-5 shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="flex items-center gap-3">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-gold-500 to-gold-300 font-display text-xs font-black text-ink-950 shadow-sm">
                       0{i + 1}
                     </span>
-                    <h3 className="font-display text-sm font-bold text-ink-950 group-hover:text-gold-600 dark:text-white dark:group-hover:text-gold-300 transition-colors">
+                    <h3 className="font-display text-sm font-bold text-fg group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="mt-2 text-xs text-ink-600 dark:text-ink-300 leading-relaxed">
+                  <p className="mt-2 text-xs text-fg-2 leading-relaxed">
                     {item.text}
                   </p>
                 </div>
@@ -106,13 +106,13 @@ export default function CoachIntro() {
             </div>
 
             {/* Coach Quote Signature */}
-            <div className="mt-8 flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-white/10">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-700 dark:bg-gold-400/10 dark:border-gold-400/30 dark:text-gold-400 font-display font-extrabold text-lg">
+            <div className="mt-8 flex items-center gap-4 pt-6 border-t border-line">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-700 dark:text-gold-400 font-display font-extrabold text-lg">
                 P
               </div>
               <div>
-                <p className="font-display font-bold text-ink-950 dark:text-white text-sm">Coach Prasanth</p>
-                <p className="text-xs text-ink-500 dark:text-ink-400">Founder & Head Coach, Vanakkam Soccer</p>
+                <p className="font-display font-bold text-fg text-sm">Coach Prasanth</p>
+                <p className="text-xs text-fg-3">Founder & Head Coach, Vanakkam Soccer</p>
               </div>
             </div>
           </div>

@@ -12,7 +12,7 @@ export default function TrainingClips() {
   const [active, setActive] = useState(null)
 
   return (
-    <section className="relative overflow-hidden bg-white text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#080d14] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-surface text-fg py-14 sm:py-20 border-b border-line">
       {/* Subtle pitch lighting */}
       <div
         aria-hidden="true"
@@ -26,16 +26,16 @@ export default function TrainingClips() {
             <span className="badge badge-gold mb-3 inline-flex">
               Field Instincts
             </span>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-              Master The Ball.
-              <span className="text-gradient block font-black">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+              Master The Ball.{" "}
+              <span className="text-gold-600 dark:text-gold-400 block sm:inline">
                 Command The Pitch.
               </span>
             </h2>
           </div>
 
           <div className="max-w-md">
-            <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300 sm:text-base">
+            <p className="text-sm leading-relaxed text-fg-2 sm:text-base">
               Raw talent gets noticed, but relentless technique wins matches. Watch these focused drills to build the confidence that scouts and coaches look for every weekend.
             </p>
 
@@ -54,7 +54,7 @@ export default function TrainingClips() {
           {clips.map((clip) => (
             <div
               key={clip.id}
-              className="group relative aspect-[3/4] overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-900 shadow-md transition-all duration-300 hover:border-gold-400/50 hover:-translate-y-1.5 hover:shadow-xl dark:border-white/10 dark:bg-ink-900 dark:shadow-card dark:hover:border-gold-400/40 dark:hover:shadow-pop"
+              className="group relative aspect-[3/4] overflow-hidden rounded-xl sm:rounded-2xl border border-line bg-ink-950 shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:-translate-y-1 hover:shadow-md"
             >
               {active === clip.id ? (
                 <div className="absolute inset-0 z-20 bg-black">

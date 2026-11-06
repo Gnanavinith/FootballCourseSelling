@@ -47,8 +47,8 @@ function FaqItem({ index, q, a, open, onToggle }) {
     <div
       className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
         open
-          ? 'border-gold-500/50 bg-amber-50/40 shadow-sm dark:border-gold-400/50 dark:bg-white/[0.05] dark:shadow-card'
-          : 'border-slate-200/90 bg-slate-50/80 hover:border-slate-300 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20'
+          ? 'border-gold-500/50 bg-page shadow-sm'
+          : 'border-line bg-surface hover:border-gold-500/30'
       }`}
     >
       <h3 className="text-base font-bold tracking-normal">
@@ -58,15 +58,15 @@ function FaqItem({ index, q, a, open, onToggle }) {
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-center justify-between gap-4 p-5 text-left font-display text-ink-950 dark:text-white transition-colors cursor-pointer"
+          className="flex w-full items-center justify-between gap-4 p-5 text-left font-display text-fg transition-colors cursor-pointer"
         >
           <span className="text-sm sm:text-base font-bold">{q}</span>
           <span
             aria-hidden="true"
             className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${
               open
-                ? 'rotate-45 bg-gold-400 text-ink-950 shadow-glow'
-                : 'bg-slate-200 text-ink-700 dark:bg-white/10 dark:text-white'
+                ? 'rotate-45 bg-gold-400 text-ink-950 shadow-sm'
+                : 'bg-page border border-line text-fg'
             }`}
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -85,7 +85,7 @@ function FaqItem({ index, q, a, open, onToggle }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="px-5 pb-5 text-xs sm:text-sm text-ink-600 dark:text-ink-300 leading-relaxed border-t border-slate-200/80 dark:border-white/5 pt-3">
+          <p className="px-5 pb-5 text-xs sm:text-sm text-fg-2 leading-relaxed border-t border-line pt-3">
             {a}
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section className="relative overflow-hidden bg-white text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#06090e] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-surface text-fg py-14 sm:py-20 border-b border-line">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="container-page">
@@ -108,23 +108,23 @@ export default function Faq() {
             <span className="badge badge-gold mb-3 inline-flex">
               Clear Answers
             </span>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-              Frequently Asked
-              <span className="text-gradient block font-black">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+              Frequently Asked{" "}
+              <span className="text-gold-600 dark:text-gold-400 block sm:inline">
                 Questions
               </span>
             </h2>
-            <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 sm:text-base leading-relaxed">
+            <p className="mt-3 text-sm text-fg-2 sm:text-base leading-relaxed">
               Everything you need to know about the weekly unlocks, practice requirements, and training philosophy.
             </p>
 
             {/* Direct Coach Help Card */}
-            <div className="relative mt-8 overflow-hidden rounded-2xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-amber-50/50 to-white dark:border-gold-400/30 dark:bg-gradient-to-br dark:from-gold-400/10 dark:via-white/[0.02] dark:to-transparent p-6 backdrop-blur-md shadow-sm">
+            <div className="relative mt-8 overflow-hidden rounded-2xl border border-line bg-page p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <span className="flex h-3 w-3 rounded-full bg-pitch-500 animate-ping" />
-                <p className="font-display text-base font-bold text-ink-950 dark:text-white">Need Personal Advice?</p>
+                <p className="font-display text-base font-bold text-fg">Need Personal Advice?</p>
               </div>
-              <p className="text-xs text-ink-600 dark:text-ink-300 leading-relaxed">
+              <p className="text-xs text-fg-2 leading-relaxed">
                 Not sure which course matches your age or current skill level? Chat with Coach Prasanth directly on WhatsApp for personalized guidance.
               </p>
               <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
@@ -132,11 +132,11 @@ export default function Faq() {
                   href={SITE.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-md btn-green text-xs font-bold justify-center"
+                  className="btn btn-md btn-primary text-xs font-bold justify-center"
                 >
                   Chat on WhatsApp →
                 </a>
-                <Link to="/contact" className="btn btn-md border border-slate-300 bg-white text-ink-800 hover:bg-slate-100 dark:btn-outline-light text-xs font-bold justify-center">
+                <Link to="/contact" className="btn btn-md btn-outline text-xs font-bold justify-center">
                   Contact Us
                 </Link>
               </div>

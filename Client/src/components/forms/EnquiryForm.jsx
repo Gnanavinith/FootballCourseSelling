@@ -103,35 +103,35 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
               <span className="badge badge-gold mb-3 inline-flex">
                 Talk to Us
               </span>
-              <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl">
-                Have Doubts
-                <span className="text-gradient block font-black">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
+                Have Doubts{" "}
+                <span className="text-gold-600 dark:text-gold-400 block sm:inline">
                   Before Enrolling?
                 </span>
               </h2>
-              <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 leading-relaxed sm:text-base">
+              <p className="mt-3 text-sm text-fg-2 leading-relaxed sm:text-base">
                 We know making decisions about sports training matters. Tell us about your child's age or your current gameplay, and we will give you an honest recommendation.
               </p>
 
               {/* Steps list */}
-              <ol className="relative mt-8 space-y-6 before:absolute before:bottom-4 before:left-[1.125rem] before:top-4 before:w-px before:bg-slate-200 dark:before:bg-white/10">
+              <ol className="relative mt-8 space-y-6 before:absolute before:bottom-4 before:left-[1.125rem] before:top-4 before:w-px before:bg-line">
                 {STEPS.map((s) => (
                   <li key={s.n} className="relative flex items-start gap-4">
                     <span className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-display text-xs font-black shadow-sm ${s.chip}`}>
                       {s.n}
                     </span>
                     <div>
-                      <p className="font-display font-bold text-ink-950 dark:text-white text-sm">{s.title}</p>
-                      <p className="text-xs text-ink-600 dark:text-ink-300 mt-0.5 leading-relaxed">{s.text}</p>
+                      <p className="font-display font-bold text-fg text-sm">{s.title}</p>
+                      <p className="text-xs text-fg-2 mt-0.5 leading-relaxed">{s.text}</p>
                     </div>
                   </li>
                 ))}
               </ol>
 
               {/* WhatsApp direct card */}
-              <div className="mt-8 rounded-2xl border border-pitch-500/30 bg-pitch-500/10 p-5 backdrop-blur-md">
+              <div className="mt-8 rounded-2xl border border-pitch-500/30 bg-pitch-500/10 p-5">
                 <p className="text-xs font-bold text-pitch-700 dark:text-pitch-300 uppercase tracking-wider">Fastest Way to Reach Us</p>
-                <p className="text-xs text-ink-700 dark:text-ink-200 mt-1">Get immediate answers from Coach Prasanth directly on WhatsApp.</p>
+                <p className="text-xs text-fg-2 mt-1">Get immediate answers from Coach Prasanth directly on WhatsApp.</p>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -287,7 +287,7 @@ export default function EnquiryForm({ courses = DEFAULT_COURSES, embedded = fals
   }
 
   return (
-    <section className="relative overflow-hidden bg-page text-fg-body py-16 sm:py-24 border-t border-line transition-colors duration-300">
+    <section className="relative overflow-hidden bg-surface text-fg py-16 sm:py-24 border-t border-line transition-colors duration-300">
       <div className="container-page">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {guidance}

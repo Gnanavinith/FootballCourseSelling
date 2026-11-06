@@ -59,7 +59,7 @@ function Badges({ c, weeks }) {
 function SpotlightCard({ c }) {
   const { title, weeks, price, originalPrice, to } = getMeta(c)
   return (
-    <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-card backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:shadow-xl dark:hover:border-gold-400/40 dark:hover:shadow-pop group">
+    <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-page shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:shadow-md group">
       <div className="grid lg:grid-cols-12 items-stretch">
         <div className="relative overflow-hidden lg:col-span-6 aspect-[16/10] lg:aspect-auto min-h-[300px]">
           <Thumb c={c} title={title} className="h-full w-full" />
@@ -75,15 +75,15 @@ function SpotlightCard({ c }) {
           <div>
             <Badges c={c} weeks={weeks} />
 
-            <h3 className="mt-4 font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-ink-950 group-hover:text-gold-600 dark:text-white dark:group-hover:text-gold-300 transition-colors">
+            <h3 className="mt-4 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-fg group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
               {title}
             </h3>
 
-            <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 leading-relaxed sm:text-base line-clamp-3">
+            <p className="mt-3 text-sm text-fg-2 leading-relaxed sm:text-base line-clamp-3">
               {c.description || "Comprehensive grassroots training curriculum to develop razor-sharp ball control, fast footwork, and pitch composure."}
             </p>
 
-            <ul className="mt-6 space-y-2.5 text-xs sm:text-sm text-ink-700 dark:text-ink-200">
+            <ul className="mt-6 space-y-2.5 text-xs sm:text-sm text-fg-body">
               <li className="flex items-center gap-2.5">
                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pitch-500/20 text-pitch-600 dark:text-pitch-400 font-bold">✓</span>
                 <span>Week 1 drills unlock immediately on checkout</span>
@@ -99,15 +99,15 @@ function SpotlightCard({ c }) {
             </ul>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-8 pt-6 border-t border-line flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {typeof price === 'number' && (
               <div>
-                <span className="text-xs text-ink-500 dark:text-ink-400 block uppercase font-bold tracking-wider">One-Time Enrolment</span>
+                <span className="text-xs text-fg-3 block uppercase font-bold tracking-wider">One-Time Enrolment</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-3xl font-extrabold text-ink-950 dark:text-white">₹{price}</span>
+                  <span className="font-display text-3xl font-extrabold text-fg">₹{price}</span>
                   {Number(originalPrice) > Number(price) && (
                     <>
-                      <span className="text-sm font-semibold text-ink-400 line-through">₹{originalPrice}</span>
+                      <span className="text-sm font-semibold text-fg-3 line-through">₹{originalPrice}</span>
                       <span className="text-xs font-bold text-pitch-600 dark:text-pitch-400">
                         {Math.round(((originalPrice - price) / originalPrice) * 100)}% OFF
                       </span>
@@ -135,7 +135,7 @@ function SpotlightCard({ c }) {
 function CourseCard({ c }) {
   const { title, weeks, price, originalPrice, to } = getMeta(c)
   return (
-    <div className="snap-start shrink-0 basis-[85%] sm:basis-auto group flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:shadow-card transition-all duration-300 hover:border-gold-400/50 hover:-translate-y-1 hover:shadow-xl dark:hover:border-gold-400/40 dark:hover:shadow-pop">
+    <div className="snap-start shrink-0 basis-[85%] sm:basis-auto group flex flex-col overflow-hidden rounded-2xl border border-line bg-page shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:-translate-y-1 hover:shadow-md">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Thumb c={c} title={title} className="h-full w-full" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -144,21 +144,21 @@ function CourseCard({ c }) {
       <div className="flex flex-1 flex-col p-5 sm:p-6 justify-between">
         <div>
           <Badges c={c} weeks={weeks} />
-          <h3 className="mt-3 font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-ink-950 group-hover:text-gold-600 dark:text-white dark:group-hover:text-gold-300 transition-colors line-clamp-2">
+          <h3 className="mt-3 font-display text-lg sm:text-xl font-bold tracking-tight text-fg group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors line-clamp-2">
             {title}
           </h3>
-          <p className="mt-2 text-xs sm:text-sm text-ink-600 dark:text-ink-300 line-clamp-2">
+          <p className="mt-2 text-xs sm:text-sm text-fg-2 line-clamp-2">
             {c.description}
           </p>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10">
+        <div className="mt-6 pt-4 border-t border-line">
           <div className="flex items-center justify-between mb-3">
             {typeof price === 'number' ? (
               <div className="flex items-baseline gap-1.5">
-                <span className="font-display text-2xl font-extrabold text-ink-950 dark:text-white">₹{price}</span>
+                <span className="font-display text-2xl font-extrabold text-fg">₹{price}</span>
                 {Number(originalPrice) > Number(price) && (
-                  <span className="text-xs text-ink-400 line-through">₹{originalPrice}</span>
+                  <span className="text-xs text-fg-3 line-through">₹{originalPrice}</span>
                 )}
               </div>
             ) : <span />}
@@ -181,7 +181,7 @@ function CourseCard({ c }) {
 
 function EmptyCoursesMessage() {
   return (
-    <div className="mt-8 rounded-3xl border border-slate-200/90 dark:border-white/10 bg-gradient-to-b from-white to-slate-50 dark:from-white/[0.04] dark:to-white/[0.01] p-8 sm:p-12 text-center shadow-md dark:shadow-card relative overflow-hidden">
+    <div className="mt-8 rounded-3xl border border-line bg-page p-8 sm:p-12 text-center shadow-sm relative overflow-hidden">
       {/* Stadium ambient light glow */}
       <div
         aria-hidden="true"
@@ -193,11 +193,11 @@ function EmptyCoursesMessage() {
           <FaFutbol className="h-6 w-6 animate-pulse" />
         </div>
 
-        <h3 className="font-display text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white">
+        <h3 className="font-display text-lg sm:text-2xl font-extrabold tracking-tight text-fg">
           New training modules are being finalized on the pitch.
         </h3>
 
-        <p className="mt-2 text-sm sm:text-base text-ink-600 dark:text-ink-300">
+        <p className="mt-2 text-sm sm:text-base text-fg-2">
           Check back shortly or message us on WhatsApp for early access.
         </p>
 
@@ -206,7 +206,7 @@ function EmptyCoursesMessage() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
-            className="btn btn-lg btn-primary inline-flex items-center gap-2.5 font-black shadow-glow"
+            className="btn btn-lg btn-primary inline-flex items-center gap-2.5 font-bold shadow-glow"
           >
             <FaWhatsapp className="h-5 w-5" />
             <span>Chat on WhatsApp</span>
@@ -237,28 +237,27 @@ export default function FeaturedCourses() {
   const isMulti = courses.length > 1
 
   return (
-    <section className="relative overflow-hidden bg-white text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#080d14] dark:border-white/5 dark:text-white" id="courses">
+    <section className="relative overflow-hidden bg-surface text-fg py-14 sm:py-20 border-b border-line" id="courses">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-gold-700 dark:text-gold-300 mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-500 animate-pulse" />
+            <span className="badge badge-gold mb-3 inline-flex">
               Academy Modules
-            </div>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-              Choose Your Pathway
-              <span className="text-gradient block font-black">
+            </span>
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+              Choose Your Pathway{" "}
+              <span className="text-gold-600 dark:text-gold-400 block sm:inline">
                 To The Starting XI
               </span>
             </h2>
-            <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 sm:text-base max-w-xl">
+            <p className="mt-3 text-sm text-fg-2 sm:text-base max-w-xl">
               Whether you are touching the ball for the first time or fighting for district selection, find the structured training program that takes you there.
             </p>
           </div>
           {isMulti && (
             <Link
               to="/courses"
-              className="btn btn-lg border border-slate-300 bg-white text-ink-800 shadow-sm hover:bg-slate-100 dark:btn-outline-light shrink-0 hidden sm:inline-flex"
+              className="btn btn-lg btn-outline shrink-0 hidden sm:inline-flex"
               data-cta="featured-see-all-top"
             >
               See All Programs →

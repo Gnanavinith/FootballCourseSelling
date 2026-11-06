@@ -147,7 +147,7 @@ export default function HowItWorks() {
   const progress = useScrollProgress(listRef)
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-gradient-to-b dark:from-[#080d14] dark:via-ink-950 dark:to-[#080d14] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-page text-fg py-14 sm:py-20 border-b border-line">
       {/* Background radial glow */}
       <div
         aria-hidden="true"
@@ -160,13 +160,13 @@ export default function HowItWorks() {
           <span className="badge badge-gold mb-3 inline-flex">
             Your Pathway
           </span>
-          <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-            How Your Game Transforms
-            <span className="text-gradient block font-black">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+            How Your Game Transforms{" "}
+            <span className="text-gold-600 dark:text-gold-400 block sm:inline">
               Step By Step
             </span>
           </h2>
-          <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 sm:text-base leading-relaxed">
+          <p className="mt-3 text-sm text-fg-2 sm:text-base leading-relaxed">
             Becoming a dominant baller is not an overnight fluke. It is a proven, disciplined journey built repetition by repetition.
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function HowItWorks() {
           {/* Trunk line */}
           <span
             aria-hidden="true"
-            className="absolute bottom-0 left-5 top-0 w-px bg-slate-200 dark:bg-white/10 lg:left-1/2 lg:-translate-x-1/2"
+            className="absolute bottom-0 left-5 top-0 w-px bg-line lg:left-1/2 lg:-translate-x-1/2"
           />
           {/* Active growing line */}
           <span
@@ -187,20 +187,20 @@ export default function HowItWorks() {
 
           {steps.map((s, i) => (
             <TreeStep key={s.n} index={i} node={s.n}>
-              <div className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-gold-400/50 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:backdrop-blur-md dark:shadow-card dark:hover:border-gold-400/40 dark:hover:shadow-pop">
+              <div className="group relative overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:shadow-md">
                 <span
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold-400 to-pitch-400 opacity-60 group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-x-0 top-0 h-1 bg-gold-500 opacity-60 group-hover:opacity-100 transition-opacity"
                 />
 
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gold-700 dark:text-gold-400 border border-gold-500/30 dark:border-gold-400/30 rounded-full px-2.5 py-0.5 bg-gold-500/5 dark:bg-gold-400/5">
                   {s.badge}
                 </span>
 
-                <h3 className="mt-4 font-display text-xl font-bold text-ink-950 group-hover:text-gold-600 dark:text-white dark:group-hover:text-gold-300 transition-colors">
+                <h3 className="mt-4 font-display text-xl font-bold text-fg group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-ink-600 dark:text-ink-300 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-fg-2 leading-relaxed">
                   {s.text}
                 </p>
               </div>
@@ -224,16 +224,16 @@ export default function HowItWorks() {
               </svg>
             }
           >
-            <div className="rounded-2xl border border-gold-500/30 bg-gradient-to-r from-gold-500/10 via-amber-50/50 to-transparent p-5 sm:p-6 dark:border-gold-400/30 dark:bg-gradient-to-r dark:from-gold-400/10 dark:via-white/[0.02] dark:to-transparent backdrop-blur-md">
+            <div className="rounded-2xl border border-gold-500/30 bg-surface p-5 sm:p-6 shadow-sm">
               <div className="flex items-start gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-400 text-ink-950 font-bold text-xs mt-0.5 shadow-sm">
                   !
                 </span>
                 <div>
-                  <h4 className="font-display font-bold text-ink-950 dark:text-white text-sm sm:text-base">
+                  <h4 className="font-display font-bold text-fg text-sm sm:text-base">
                     The 7-Day Mastery Principle
                   </h4>
-                  <p className="mt-1 text-xs sm:text-sm text-ink-600 dark:text-ink-300 leading-relaxed">
+                  <p className="mt-1 text-xs sm:text-sm text-fg-2 leading-relaxed">
                     Week 1 is available immediately after enrolment. Subsequent weeks unlock every 7 days so you don't skip reps. Real football prowess comes from deliberate habit, not rushed binge-watching.
                   </p>
                 </div>

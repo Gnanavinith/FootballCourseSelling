@@ -30,7 +30,7 @@ const LEGAL = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-slate-100 text-ink-900 border-t border-slate-200 transition-colors duration-300 dark:bg-[#05070b] dark:border-white/10 dark:text-white">
+    <footer className="relative overflow-hidden bg-surface text-fg border-t border-line transition-colors duration-300">
       {/* Subtle top stadium glow */}
       <div
         aria-hidden="true"
@@ -44,7 +44,7 @@ export default function Footer() {
             <Link to="/" className="inline-flex items-center gap-3 no-underline hover:no-underline group">
               <LogoMark className="h-10 w-9 transition-transform duration-300 group-hover:scale-105" />
               <span className="flex flex-col leading-none">
-                <span className="font-display font-black text-2xl uppercase tracking-wider text-ink-950 dark:text-white">
+                <span className="font-display font-black text-2xl uppercase tracking-wider text-fg">
                   Vanakkam
                 </span>
                 <span className="mt-1 flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-2">
               Grassroots to glory football training engineered for passionate players across Tamil Nadu and India. Structured weekly video drills taught in Tamil and English.
             </p>
 
@@ -65,7 +65,7 @@ export default function Footer() {
                 href="https://youtube.com/@vanakkamsoccer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-xs font-semibold text-ink-800 shadow-sm transition-all hover:border-gold-500 hover:text-gold-700 dark:border-white/15 dark:bg-white/[0.03] dark:text-white dark:hover:border-gold-400 dark:hover:bg-gold-400/10 dark:hover:text-gold-300"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-page px-3.5 py-1.5 text-xs font-semibold text-fg shadow-sm transition-all hover:border-gold-500 hover:text-gold-600 dark:hover:text-gold-400"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4 fill-red-500" aria-hidden="true">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -95,7 +95,7 @@ export default function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="inline-block text-sm text-ink-600 transition-colors duration-200 hover:text-ink-950 dark:text-ink-300 dark:hover:text-white"
+                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-fg"
                   >
                     {l.label}
                   </Link>
@@ -114,7 +114,7 @@ export default function Footer() {
                 <li key={i}>
                   <Link
                     to={c.to}
-                    className="inline-block text-sm text-ink-600 transition-colors duration-200 hover:text-gold-600 dark:text-ink-300 dark:hover:text-gold-400"
+                    className="inline-block text-sm text-fg-2 transition-colors duration-200 hover:text-gold-600 dark:hover:text-gold-400"
                   >
                     {c.label}
                   </Link>
@@ -128,7 +128,7 @@ export default function Footer() {
             <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">
               Academy Base
             </p>
-            <div className="mt-4 space-y-3 text-xs text-ink-600 dark:text-ink-300">
+            <div className="mt-4 space-y-3 text-xs text-fg-2">
               <p className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 shrink-0 text-pitch-600 dark:text-pitch-400 mt-0.5" />
                 <span>Tamil Nadu, India</span>
@@ -137,7 +137,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-gold-600 dark:text-gold-400" />
                 <span>coach@vanakkamsoccer.com</span>
               </p>
-              <div className="rounded-xl border border-slate-300/80 bg-white p-2.5 text-[11px] text-ink-600 shadow-sm flex items-center gap-2 mt-3 dark:border-white/10 dark:bg-white/[0.02] dark:text-ink-400">
+              <div className="rounded-xl border border-line bg-page p-2.5 text-[11px] text-fg-3 shadow-sm flex items-center gap-2 mt-3">
                 <ShieldCheck className="h-4 w-4 text-pitch-600 dark:text-pitch-400 shrink-0" />
                 <span>Official Razorpay Verified Merchant</span>
               </div>
@@ -146,7 +146,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200/80 pt-6 text-center sm:flex-row sm:text-left text-xs text-ink-500 dark:border-white/10 dark:text-ink-400">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-center sm:flex-row sm:text-left text-xs text-fg-3">
           <p>
             © {new Date().getFullYear()} Vanakkam Soccer Academy. Dedicated to grassroots football development.
           </p>
@@ -155,7 +155,7 @@ export default function Footer() {
               <a
                 key={item.label}
                 href={item.href}
-                className="hover:text-ink-950 dark:hover:text-white transition-colors"
+                className="hover:text-fg transition-colors"
               >
                 {item.label}
               </a>

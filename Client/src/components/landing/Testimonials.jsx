@@ -48,7 +48,7 @@ const secondRow = reviews.slice(3, 6);
 
 function ReviewCard({ name, role, tag, body }) {
   return (
-    <div className="relative h-full w-80 shrink-0 overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-gold-400/50 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-card dark:hover:border-gold-400/40">
+    <div className="relative h-full w-80 shrink-0 overflow-hidden rounded-2xl border border-line bg-surface p-5 shadow-sm transition-all duration-300 hover:border-gold-500/50 hover:-translate-y-1 hover:shadow-md">
       {/* Star rating */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex text-gold-500 dark:text-gold-400 text-xs tracking-wider" aria-label="5 out of 5 stars">
@@ -59,17 +59,17 @@ function ReviewCard({ name, role, tag, body }) {
         </span>
       </div>
 
-      <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 leading-relaxed line-clamp-4 italic">
+      <p className="text-xs sm:text-sm text-fg-body leading-relaxed line-clamp-4 italic">
         "{body}"
       </p>
 
-      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center gap-3">
+      <div className="mt-4 pt-3 border-t border-line flex items-center gap-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-gold-500 to-gold-300 text-ink-950 font-display font-bold text-xs shadow-sm">
           {name.charAt(0)}
         </div>
         <div className="min-w-0">
-          <p className="truncate font-display text-sm font-bold text-ink-950 dark:text-white">{name}</p>
-          <p className="truncate text-[11px] text-ink-500 dark:text-ink-400">{role}</p>
+          <p className="truncate font-display text-sm font-bold text-fg">{name}</p>
+          <p className="truncate text-[11px] text-fg-3">{role}</p>
         </div>
       </div>
     </div>
@@ -78,20 +78,20 @@ function ReviewCard({ name, role, tag, body }) {
 
 export default function Testimonials() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 text-ink-950 py-16 sm:py-24 border-t border-slate-200 transition-colors duration-300 dark:bg-[#080d14] dark:border-white/5 dark:text-white">
+    <section className="relative overflow-hidden bg-page text-fg py-14 sm:py-20 border-b border-line">
       <div className="container-page">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <span className="badge badge-gold mb-3 inline-flex">
             Grassroots Stories
           </span>
-          <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-950 dark:text-white sm:text-4xl lg:text-5xl">
-            From The Local Ground
-            <span className="text-gradient block font-black">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+            From The Local Ground{" "}
+            <span className="text-gold-600 dark:text-gold-400 block sm:inline">
               To The Scoreboard
             </span>
           </h2>
-          <p className="mt-3 text-sm text-ink-600 dark:text-ink-300 sm:text-base leading-relaxed">
+          <p className="mt-3 text-sm text-fg-2 sm:text-base leading-relaxed">
             Real players. Dedicated parents. Real breakthroughs on match day.
           </p>
         </div>
@@ -116,8 +116,8 @@ export default function Testimonials() {
           </div>
 
           {/* Side Fade Gradients for Seamless Look */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent dark:from-[#080d14] dark:to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent dark:from-[#080d14] dark:to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-page to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-page to-transparent z-10" />
         </div>
       </div>
     </section>
