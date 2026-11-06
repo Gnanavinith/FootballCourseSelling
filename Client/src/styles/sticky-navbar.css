@@ -1,0 +1,60 @@
+/* =========================================================
+   Premium Sticky Navigation Bar CSS
+   ========================================================= */
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  animation: navSlideDown 500ms ease-out both;
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease;
+}
+
+/* Fixed position on home page so hero extends beneath it */
+.navbar-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Transparent state at the top of the home page (scrollY < 10) */
+.navbar-transparent {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Scrolled state (scrollY >= 10, or menu open, or non-home pages) */
+.navbar-scrolled {
+  background-color: rgba(6, 9, 14, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    animation: none !important;
+    transition: none !important;
+  }
+}

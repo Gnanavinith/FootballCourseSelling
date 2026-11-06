@@ -1,0 +1,55 @@
+/* =========================================================
+   Navbar link modern hover animation (smooth pill highlight + sliding glow)
+   ========================================================= */
+.nav-link {
+  position: relative;
+  margin-inline: 0.35rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink-300, #cbd5e1);
+  background-color: transparent;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.nav-link::after { display: none !important; }
+.nav-link:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+.nav-link.active, .nav-link[aria-current="page"], .nav-link.is-active {
+  color: #06090e !important;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+  text-decoration: none !important;
+}
+
+/* Transparent navbar state (on light hero, dark text; on dark hero, light text) */
+.navbar-transparent .nav-link:not(.active):not([aria-current="page"]):not(.is-active) {
+  color: #0b111e;
+}
+.navbar-transparent .nav-link:not(.active):not([aria-current="page"]):not(.is-active):hover {
+  color: #06090e !important;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+:is(.dark) .navbar-transparent .nav-link:not(.active):not([aria-current="page"]):not(.is-active) {
+  color: #cbd5e1;
+}
+:is(.dark) .navbar-transparent .nav-link:not(.active):not([aria-current="page"]):not(.is-active):hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}
