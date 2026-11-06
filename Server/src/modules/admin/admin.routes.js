@@ -44,4 +44,10 @@ router.get('/payment-requests', ...A, paymentRequestController.listAll)
 router.patch('/payment-requests/:id/approve', ...A, paymentRequestController.approve)
 router.patch('/payment-requests/:id/reject', ...A, paymentRequestController.reject)
 
+/* 1-on-1 Sessions */
+router.get('/sessions', ...A, adminController.listSessions)
+router.get('/sessions/:id', ...A, adminController.getSession)
+router.patch('/sessions/:id', ...A, adminController.updateSession)
+router.post('/sessions/:id/remind', ...A, adminController.sendSessionReminder)
+
 export default router

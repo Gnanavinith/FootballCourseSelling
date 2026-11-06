@@ -19,6 +19,7 @@ import AdminCourses from './pages/admin/AdminCourses.jsx'
 import AdminVideos from './pages/admin/AdminVideos.jsx'
 import AdminStudents from './pages/admin/AdminStudents.jsx'
 import AdminOrders from './pages/admin/AdminOrders.jsx'
+import AdminSessions from './pages/admin/AdminSessions.jsx'
 import AdminCoupons from './pages/admin/AdminCoupons.jsx'
 import AdminEnquiries from './pages/admin/AdminEnquiries.jsx'
 import AdminEmails from './pages/admin/AdminEmails.jsx'
@@ -142,6 +143,7 @@ function Shell() {
           <Route path="courses" element={<AdminCourses />} />
           <Route path="videos" element={<AdminVideos />} />
           <Route path="students" element={<AdminStudents />} />
+          <Route path="sessions" element={<AdminSessions />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="coupons" element={<AdminCoupons />} />
           <Route path="enquiries" element={<AdminEnquiries />} />

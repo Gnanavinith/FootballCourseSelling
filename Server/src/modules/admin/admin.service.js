@@ -318,4 +318,141 @@ export const adminService = {
     await audit(adminId, 'delete_enquiry', 'Enquiry', id, {})
     return { deleted: true }
   },
+
+  /* ------------------------------------------------------------------ */
+  /* 1-on-1 Sessions                                                    */
+  /* ------------------------------------------------------------------ */
+  async listSessions({ search, status, paymentStatus, from, to, page = 1, limit = 50 } = {}) {
+    const filter = { itemType: 'booking' }
+
+    if (paymentStatus && paymentStatus !== 'All') {
+      filter.status = paymentStatus
+    }
+
+    if (status && status !== 'All') {
+      filter['bookingDetails.status'] = status
+    }
+
+    if (search && search.trim()) {
+      const q = search.trim()
+      const regex = new RegExp(q, 'i')
+      filter.$or = [
+        { 'bookingDetails.name': regex },
+        { 'bookingDetails.email': regex },
+        { 'bookingDetails.phone': regex },
+        { 'bookingDetails.serviceName': regex },
+        { razorpayPaymentId: regex },
+        { razorpayOrderId: regex },
+      ]
+    }
+
+    if (from || to) {
+      filter.createdAt = {}
+      if (from) filter.createdAt.$gte = new Date(from)
+      if (to) filter.createdAt.$lte = new Date(to)
+    }
+
+    const p = Math.max(1, Number(page) || 1)
+    const l = Math.max(1, Number(limit) || 50)
+
+    const [sessions, total, allSessions] = await Promise.all([
+      Order.find(filter)
+        .populate('userId', 'name email phone avatar')
+        .sort({ createdAt: -1 })
+        .skip((p - 1) * l)
+        .limit(l),
+      Order.countDocuments(filter),
+      Order.find({ itemType: 'booking' }).select('amount status bookingDetails createdAt'),
+    ])
+
+    // Calculate overall metrics
+    const summary = {
+      totalBookings: allSessions.length,
+      paidBookings: allSessions.filter((s) => s.status === 'Paid').length,
+      totalRevenue: allSessions
+        .filter((s) => s.status === 'Paid')
+        .reduce((sum, s) => sum + Number(s.amount || 0), 0),
+      scheduledCount: allSessions.filter((s) => (s.bookingDetails?.status || 'Scheduled') === 'Scheduled').length,
+      completedCount: allSessions.filter((s) => s.bookingDetails?.status === 'Completed').length,
+      cancelledCount: allSessions.filter((s) => s.bookingDetails?.status === 'Cancelled').length,
+    }
+
+    return {
+      sessions,
+      total,
+      page: p,
+      limit: l,
+      totalPages: Math.ceil(total / l) || 1,
+      summary,
+    }
+  },
+
+  async getSession(id) {
+    const session = await Order.findOne({ _id: id, itemType: 'booking' }).populate('userId', 'name email phone avatar')
+    if (!session) throw new Error('1-on-1 session not found')
+    return session
+  },
+
+  async updateSession(id, data, adminId) {
+    const session = await Order.findOne({ _id: id, itemType: 'booking' })
+    if (!session) throw new Error('1-on-1 session not found')
+
+    const currentDetails = session.bookingDetails || {}
+    const newDetails = { ...currentDetails }
+
+    if (data.status) {
+      newDetails.status = data.status
+      if (data.status === 'Completed') newDetails.completedAt = new Date()
+      if (data.status === 'Cancelled') newDetails.cancelledAt = new Date()
+    }
+    if (data.meetingLink !== undefined) newDetails.meetingLink = String(data.meetingLink).trim()
+    if (data.coachNotes !== undefined) newDetails.coachNotes = String(data.coachNotes).trim()
+    if (data.date) newDetails.date = String(data.date).trim()
+    if (data.time) newDetails.time = String(data.time).trim()
+
+    session.bookingDetails = newDetails
+    await session.save()
+
+    await audit(adminId, 'update_session', 'Order', id, data)
+
+    // Notify student if meeting link or schedule was added/updated
+    if (session.userId && (data.meetingLink || data.date || data.time)) {
+      await Notification.create({
+        audience: 'student',
+        userId: session.userId,
+        type: 'session_updated',
+        title: '1-on-1 Session Updated',
+        body: `Details for ${newDetails.serviceName || 'your session'} on ${newDetails.date || ''} have been updated.`,
+        link: '/dashboard',
+      }).catch(console.error)
+    }
+
+    return session
+  },
+
+  async sendSessionReminder(id, adminId) {
+    const session = await Order.findOne({ _id: id, itemType: 'booking' })
+    if (!session) throw new Error('1-on-1 session not found')
+
+    const b = session.bookingDetails || {}
+    if (!b.email) throw new Error('No email found for this session booking')
+
+    await emailService.sendTemplate('booking_reminder', {
+      to: b.email,
+      toName: b.name || 'Athlete',
+      data: {
+        name: b.name || 'Athlete',
+        'booking.serviceName': b.serviceName || '1-on-1 Training Session',
+        date: b.date || '',
+        time: b.time || '',
+        location: b.meetingLink || 'Online via Google Meet / WhatsApp Video Call',
+      },
+      userId: session.userId || undefined,
+      entityType: 'Booking',
+      entityId: session._id.toString(),
+    })
+
+    await audit(adminId, 'send_session_reminder', 'Order', id, { email: b.email })
+    return { ok: true, sentTo: b.email }
+  },
 }

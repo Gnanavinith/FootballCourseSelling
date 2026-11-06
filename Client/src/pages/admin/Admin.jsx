@@ -23,6 +23,7 @@ const NAV = [
   { to: "/admin/courses", label: "Courses", icon: BookOpen },
   { to: "/admin/videos", label: "Weekly videos", icon: Video },
   { to: "/admin/students", label: "Students", icon: Users },
+  { to: "/admin/sessions", label: "1-on-1 Sessions", icon: Calendar },
   { to: "/admin/orders", label: "Orders", icon: Receipt },
   { to: "/admin/enquiries", label: "Enquiries", icon: MessageSquare },
   { to: "/admin/payments", label: "Manual payments", icon: IndianRupee },

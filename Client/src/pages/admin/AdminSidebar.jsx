@@ -3,6 +3,7 @@ import { BrandLogo } from "../../components/LogoMark.jsx";
 import {
   Bell,
   BookOpen,
+  CalendarCheck,
   ExternalLink,
   IndianRupee,
   LayoutDashboard,
@@ -34,6 +35,7 @@ const GROUPS = [
   {
     label: "People and sales",
     items: [
+      { to: "/admin/sessions", label: "1-on-1 Sessions", icon: CalendarCheck },
       { to: "/admin/students", label: "Students", icon: Users },
       { to: "/admin/orders", label: "Orders", icon: Receipt },
       { to: "/admin/coupons", label: "Coupons", icon: Ticket },

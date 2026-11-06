@@ -116,4 +116,22 @@ export const adminController = {
     const data = await enquiryService.reply(req.params.id, req.body.replyMessage, req.user)
     res.json({ success: true, data })
   }),
+
+  /* 1-on-1 Sessions */
+  listSessions: asyncHandler(async (req, res) => {
+    const data = await adminService.listSessions(req.query)
+    res.json({ success: true, data })
+  }),
+  getSession: asyncHandler(async (req, res) => {
+    const data = await adminService.getSession(req.params.id)
+    res.json({ success: true, data })
+  }),
+  updateSession: asyncHandler(async (req, res) => {
+    const data = await adminService.updateSession(req.params.id, req.body, req.user.id)
+    res.json({ success: true, data })
+  }),
+  sendSessionReminder: asyncHandler(async (req, res) => {
+    const data = await adminService.sendSessionReminder(req.params.id, req.user.id)
+    res.json({ success: true, data })
+  }),
 }

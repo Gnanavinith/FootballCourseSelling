@@ -186,9 +186,9 @@ export const paymentService = {
       await Notification.create({
         audience: 'admin',
         type: 'booking',
-        title: `New Mentorship Booking: ${b.name || 'Student'}`,
-        body: `${b.serviceName || 'Session'} • ${b.date || ''}, ${b.time || ''} (₹${updated.amount})`,
-        link: '/admin/orders',
+        title: `New 1-on-1 Session: ${b.name || 'Student'}`,
+        body: `${b.serviceName || '1-on-1 Session'} • ${b.date || ''}, ${b.time || ''} (₹${updated.amount})`,
+        link: '/admin/sessions',
       }).catch((e) => console.error('[Notification booking error]:', e))
 
       if (updated.userId) {
@@ -196,8 +196,8 @@ export const paymentService = {
           audience: 'student',
           userId: updated.userId,
           type: 'booking_confirmed',
-          title: 'Booking Confirmed!',
-          body: `Your mentorship appointment for ${b.serviceName || 'Training Session'} on ${b.date || ''} is confirmed.`,
+          title: '1-on-1 Session Confirmed!',
+          body: `Your session appointment for ${b.serviceName || 'Training Session'} on ${b.date || ''} is confirmed.`,
           link: '/dashboard',
         }).catch((e) => console.error('[Notification student error]:', e))
       }
@@ -209,10 +209,13 @@ export const paymentService = {
           toName: b.name || 'Athlete',
           data: {
             name: b.name || 'Athlete',
-            'booking.serviceName': b.serviceName || '1-on-1 Mentorship',
+            'booking.serviceName': b.serviceName || '1-on-1 Training Session',
             date: b.date || '',
             time: b.time || '',
             location: 'Online via Google Meet / WhatsApp Video Call',
+            amount: formatINR(updated.amount),
+            orderId: updated.razorpayOrderId,
+            paymentId: razorpayPaymentId,
           },
           dedupeKey: `booking_user:${updated._id}`,
           userId: updated.userId || undefined,
@@ -235,12 +238,15 @@ export const paymentService = {
           replyTo: b.email || undefined,
           data: {
             'booking.name': b.name || 'Student',
-            'booking.serviceName': b.serviceName || 'Mentorship Session',
+            'booking.serviceName': b.serviceName || '1-on-1 Training Session',
             date: b.date || '',
             time: b.time || '',
             phone: b.phone || 'Not given',
             email: b.email || 'Not given',
             message: b.message || 'No additional note',
+            amount: formatINR(updated.amount),
+            orderId: updated.razorpayOrderId,
+            paymentId: razorpayPaymentId,
           },
           dedupeKey: `booking_admin:${updated._id}:${adminTo.trim()}`,
           entityType: 'Booking',
