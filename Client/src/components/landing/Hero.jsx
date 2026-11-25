@@ -78,20 +78,20 @@ export default function Hero() {
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
           {/* Copy */}
           <div className="min-w-0">
-            <h1 className="max-w-[16ch] text-fg">
-              <span className="text-gold-600 dark:text-gold-400">Turn raw passion</span>{" "}
-              into match mastery
+            <h1 className="max-w-[18ch] text-fg">
+              <span className="text-gold-600 dark:text-gold-400">Learn football skills</span>{" "}
+              from your room.
             </h1>
 
             <p className="text-lead mt-5 max-w-[34rem]">
-              Weekly video drills in Tamil and English that build your first
-              touch, your dribbling and your decision-making, so you play with
-              confidence on match day.
+              Learn football the right way with expert-led video lessons in
+              Tamil. Master your first touch and ball control from the comfort
+              of your home. One lesson at a time.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/courses" className="btn btn-lg btn-primary w-full sm:w-auto">
-                Start Week 1 today
+                Start Your Football Journey
               </Link>
               <a
                 href={SITE.youtubeUrl}
@@ -99,23 +99,23 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="btn btn-lg btn-outline w-full sm:w-auto"
               >
-                Watch a free lesson
+                Watch a Free Lesson
               </a>
             </div>
 
             <p className="mt-4 text-sm text-fg-3">
-              Week 1 unlocks instantly. Courses from Rs {SITE.lowestPrice}. Pay
-              by UPI or card.
+              Your first step to better football starts here. Learn anytime,
+              practice anywhere.
             </p>
 
             {PROOF_STRIP?.length > 0 && (
-              <dl className="mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-line pt-6">
+              <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-6">
                 {PROOF_STRIP.map((p) => (
                   <div key={p.label}>
-                    <dt className="text-sm text-fg-3">{p.label}</dt>
                     <dd className="font-display text-lg font-bold text-fg">
                       {p.value}
                     </dd>
+                    <dt className="text-sm text-fg-3">{p.label}</dt>
                   </div>
                 ))}
               </dl>

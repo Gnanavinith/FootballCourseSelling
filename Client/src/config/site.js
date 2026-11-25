@@ -1,7 +1,7 @@
 // Shared site constants — single source of truth for marketing copy/numbers.
 export const SITE = {
   brand: "Vanakkam Soccer",
-  youtubeSubscribers: "79.9K",
+  youtubeSubscribers: "85K+",
   youtubeUrl: "https://www.youtube.com/@vanakkamsoccer",
   whatsappUrl: "https://wa.me/919361405307",
   lowestPrice: 999,
@@ -9,9 +9,10 @@ export const SITE = {
 };
 
 export const PROOF_STRIP = [
-  { label: "YouTube subscribers", value: "79.9K" },
-  { label: "Lessons in", value: "English & Tamil" },
-  { label: "New lesson every", value: "7 days" },
+  { label: "YouTube Subscribers", value: "85K+" },
+  { label: "Tamil Nadu Champion in freestyle football", value: "3 Times" },
+  { label: "Of field experience", value: "15+ Years" },
+  { label: "Lessons in", value: "Tamil & English" },
 ];
 
 export const TESTIMONIALS = [
